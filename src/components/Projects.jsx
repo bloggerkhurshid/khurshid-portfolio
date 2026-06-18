@@ -59,7 +59,7 @@ const projects = [
       'Copy prompts instantly to clipboard'
     ],
     tech: ['Android Studio', 'Java', 'XML'],
-    link: '#',
+    link: 'https://play.google.com/store/apps/details?id=com.projuktisoft.gpt',
     linkText: 'View App',
     icon: Sparkles
   }

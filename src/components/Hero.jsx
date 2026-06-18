@@ -34,7 +34,7 @@ export default function Hero() {
                 View My Work
                 <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
               </a>
-              <a href="mailto:khurshid@projuktisoft.com" className="inline-flex items-center gap-2 px-8 py-4 bg-transparent text-white border border-white/20 font-medium tracking-wide hover:bg-white/5 transition-colors">
+              <a href="#contact" className="inline-flex items-center gap-2 px-8 py-4 bg-transparent text-white border border-white/20 font-medium tracking-wide hover:bg-white/5 transition-colors">
                 Contact Me
               </a>
             </div>
