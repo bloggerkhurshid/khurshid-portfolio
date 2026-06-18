@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+@theme {
+  --color-glass-border: rgba(255, 255, 255, 0.08);
+  --color-glass-bg: rgba(25, 25, 25, 0.4);
+  --color-glass-bg-hover: rgba(40, 40, 40, 0.5);
+  --font-sans: 'Inter', system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: #050505;
+}
+
+body {
+  background-color: #050505;
+  color: #ffffff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+.liquid-glass {
+  background-color: rgba(255, 255, 255, 0.03);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+}
+
+.liquid-glass-card {
+  background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+.liquid-glass-card:hover {
+  background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+@keyframes blob {
+  0% { transform: translate(0px, 0px) scale(1); }
+  33% { transform: translate(30px, -50px) scale(1.1); }
+  66% { transform: translate(-20px, 20px) scale(0.9); }
+  100% { transform: translate(0px, 0px) scale(1); }
+}
+
+.animate-blob {
+  animation: blob 10s infinite alternate;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+
+/* Custom Selection */
+::selection {
+  background-color: rgba(255, 255, 255, 0.99);
+  color: #000;
+}
