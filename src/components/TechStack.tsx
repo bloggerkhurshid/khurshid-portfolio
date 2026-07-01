@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Layout, Server, Database, Code2, Wrench } from 'lucide-react';
 import { 
   SiReact, SiNextdotjs, SiTypescript, SiTailwindcss, SiRedux,
   SiNodedotjs, SiExpress, SiJsonwebtokens,
@@ -15,7 +14,6 @@ import {
 const categories = [
   {
     title: "Frontend",
-    icon: <Layout className="w-5 h-5" />,
     skills: [
       { name: "React.js", icon: <SiReact /> },
       { name: "Next.js", icon: <SiNextdotjs /> },
@@ -28,17 +26,15 @@ const categories = [
   },
   {
     title: "Backend",
-    icon: <Server className="w-5 h-5" />,
     skills: [
       { name: "Node.js", icon: <SiNodedotjs /> },
       { name: "Express.js", icon: <SiExpress /> },
-      { name: "RESTful APIs", icon: <Server /> },
+      { name: "RESTful APIs", icon: <SiNodedotjs /> },
       { name: "JWT Auth", icon: <SiJsonwebtokens /> }
     ]
   },
   {
     title: "Database",
-    icon: <Database className="w-5 h-5" />,
     skills: [
       { name: "MongoDB", icon: <SiMongodb /> },
       { name: "MySQL", icon: <SiMysql /> },
@@ -47,66 +43,54 @@ const categories = [
     ]
   },
   {
-    title: "Languages",
-    icon: <Code2 className="w-5 h-5" />,
-    skills: [
-      { name: "JavaScript", icon: <SiJavascript /> },
-      { name: "TypeScript", icon: <SiTypescript /> },
-      { name: "HTML5", icon: <SiHtml5 /> },
-      { name: "CSS3", icon: <SiCss /> }
-    ]
-  },
-  {
     title: "Tools & DevOps",
-    icon: <Wrench className="w-5 h-5" />,
     skills: [
       { name: "Git", icon: <SiGit /> },
       { name: "GitHub", icon: <SiGithub /> },
       { name: "Vercel", icon: <SiVercel /> },
-      { name: "Postman", icon: <SiPostman /> },
-      { name: "Figma", icon: <SiFigma /> },
-      { name: "Docker", icon: <SiDocker /> }
+      { name: "Docker", icon: <SiDocker /> },
+      { name: "Figma", icon: <SiFigma /> }
     ]
   }
 ];
 
 export default function TechStack() {
   return (
-    <section className="py-24 md:py-32 bg-background border-y border-border/30">
-      <div className="mx-auto max-w-6xl px-6">
+    <section className="py-32 px-6 bg-[#050505]">
+      <div className="mx-auto max-w-6xl">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-10 md:mb-14"
+          className="flex flex-col md:flex-row md:justify-between md:items-end gap-6 mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight">Technical Arsenal</h2>
+          <div className="w-full">
+            <h2 className="text-[10vw] md:text-[8vw] lg:text-[80px] font-bold tracking-tighter text-white leading-none uppercase mb-6">
+              Expertise
+            </h2>
+            <div className="w-full h-[1px] bg-white/10" />
+          </div>
         </motion.div>
 
-        <div className="flex flex-col gap-8 md:gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-white/10 border border-white/10">
           {categories.map((category, idx) => (
             <motion.div
               key={category.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: idx * 0.1 }}
-              className="grid md:grid-cols-4 gap-4 md:gap-6 items-start border-b border-border/50 pb-8 md:pb-10 last:border-0 last:pb-0"
+              transition={{ delay: idx * 0.1, duration: 0.8 }}
+              className="bg-[#050505] p-8 md:p-10 flex flex-col group hover:bg-white/[0.02] transition-colors duration-500"
             >
-              <div className="md:col-span-1 flex items-center gap-3 text-foreground font-bold text-xl mb-4 md:mb-0">
-                {category.icon}
-                <h3>{category.title}</h3>
-              </div>
+              <h3 className="text-white/40 text-xs tracking-[0.2em] uppercase mb-10 group-hover:text-white transition-colors duration-500">{category.title}</h3>
               
-              <div className="md:col-span-3">
-                <div className="flex flex-wrap gap-x-8 gap-y-4">
-                  {category.skills.map(skill => (
-                    <div key={skill.name} className="flex items-center gap-2 text-lg text-muted font-medium hover:text-foreground transition-colors cursor-default">
-                      <span className="text-foreground/70">{skill.icon}</span>
-                      <span>{skill.name}</span>
-                    </div>
-                  ))}
-                </div>
+              <div className="flex flex-col gap-6 mt-auto">
+                {category.skills.map(skill => (
+                  <div key={skill.name} className="flex items-center gap-4 text-white hover:text-white/70 transition-colors">
+                    <span className="text-white/50 text-xl">{skill.icon}</span>
+                    <span className="font-medium tracking-tight text-lg">{skill.name}</span>
+                  </div>
+                ))}
               </div>
             </motion.div>
           ))}
