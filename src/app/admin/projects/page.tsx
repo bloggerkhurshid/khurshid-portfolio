@@ -6,6 +6,7 @@ import { Plus, Trash2, Edit2 } from 'lucide-react';
 interface Project {
   id: number;
   title: string;
+  slug: string;
   description: string;
   tech_stacks: string;
   live_url: string;
