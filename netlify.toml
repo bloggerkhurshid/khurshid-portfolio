@@ -1,7 +1,6 @@
 [build]
   command = "npm run build"
-  publish = ".next"
+  # Do not specify the publish directory; the Next.js plugin will automatically handle it!
 
-# The Next.js plugin is automatically configured by Netlify, 
-# but we explicitly define the build directory here to override 
-# your old Vite "dist" configuration in the Netlify UI.
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
