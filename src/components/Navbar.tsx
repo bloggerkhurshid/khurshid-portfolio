@@ -2,14 +2,14 @@
 
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
 import { usePathname } from 'next/navigation';
+import Link from 'next/link';
+import { ThemeToggle } from './ThemeToggle';
 
 const navItems = [
-  { name: 'Home', href: '/#home' },
-  { name: 'Projects', href: '/projects' },
-  { name: 'Blog', href: '/blog' },
   { name: 'About', href: '/#about' },
+  { name: 'Projects', href: '/#projects' },
+  { name: 'Blog', href: '/#home-blog' },
   { name: 'Contact', href: '/#contact' },
 ];
 
@@ -20,11 +20,23 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      setScrolled(window.scrollY > 10);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (href.startsWith('/#') && pathname === '/') {
+      e.preventDefault();
+      const targetId = href.replace('/#', '');
+      const element = document.getElementById(targetId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+    if (isOpen) setIsOpen(false);
+  };
 
   if (pathname?.startsWith('/admin')) {
     return null;
@@ -32,58 +44,62 @@ export default function Navbar() {
 
   return (
     <header 
-      className={`fixed top-0 w-full z-50 transition-colors duration-300 px-6 ${(scrolled || isOpen) ? 'bg-background border-b border-border py-4' : 'bg-transparent py-6'}`}
+      className={`fixed top-0 right-0 left-0 z-50 transition-all duration-300 ${
+        scrolled ? 'bg-background/80 border-b border-border backdrop-blur-md' : 'bg-transparent border-b border-transparent'
+      }`}
     >
-      <div className="mx-auto max-w-6xl w-full flex justify-between items-center">
-        <a href="/" className="text-xl font-bold tracking-tight">Khurshid.</a>
+      <nav className="mx-auto flex h-16 items-center justify-between w-full max-w-7xl px-6">
+        <Link href="/" className="font-display text-foreground text-lg font-semibold tracking-tight">
+          khurshidalom<span className="text-primary">.in</span>
+        </Link>
 
-        {/* Desktop Nav */}
-        <nav className="hidden md:flex gap-8 items-center">
-          {navItems.map((item) => (
-            <a 
-              key={item.name} 
-              href={item.href}
-              className="text-[15px] font-medium tracking-wide text-foreground/80 hover:text-foreground transition-colors"
-            >
-              {item.name}
-            </a>
-          ))}
-        </nav>
-
-        {/* Mobile Toggle */}
-        <button 
-          className="md:hidden text-foreground p-2" 
-          onClick={() => setIsOpen(!isOpen)}
-          aria-label="Toggle menu"
-        >
-          {isOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
-      </div>
-
-      {/* Mobile Nav Overlay */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div 
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="md:hidden absolute top-full left-0 w-full bg-background border-b border-border shadow-lg"
-          >
-            <div className="flex flex-col px-6 py-8 gap-6">
-              {navItems.map((item) => (
-                <a 
-                  key={item.name} 
+        <div className="flex items-center gap-4">
+          {/* Desktop Nav */}
+          <ul className="hidden items-center gap-8 md:flex">
+            {navItems.map((item) => (
+              <li key={item.name}>
+                <Link 
                   href={item.href}
-                  onClick={() => setIsOpen(false)}
-                  className="text-2xl font-bold tracking-tight"
+                  onClick={(e) => handleNavClick(e, item.href)}
+                  className="text-muted-foreground hover:text-foreground text-sm transition-colors duration-200"
                 >
                   {item.name}
-                </a>
-              ))}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+                </Link>
+              </li>
+            ))}
+          </ul>
+          
+          <ThemeToggle />
+
+          {/* Mobile Toggle */}
+          <button 
+            className="text-foreground md:hidden p-2 focus:outline-none" 
+            onClick={() => setIsOpen(!isOpen)}
+            aria-label="Toggle menu"
+          >
+            {isOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
+        </div>
+      </nav>
+
+      {/* Mobile Nav Menu */}
+      {isOpen && (
+        <div className="md:hidden absolute top-full left-0 w-full bg-background/80 backdrop-blur-md border-b border-border shadow-2xl">
+          <ul className="flex flex-col items-center gap-6 py-8">
+            {navItems.map((item) => (
+              <li key={item.name}>
+                <Link 
+                  href={item.href}
+                  onClick={(e) => handleNavClick(e, item.href)}
+                  className="text-muted-foreground hover:text-foreground text-base transition-colors duration-200"
+                >
+                  {item.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </header>
   );
 }

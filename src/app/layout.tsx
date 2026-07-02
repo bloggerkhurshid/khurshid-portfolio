@@ -54,15 +54,16 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-  icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon.ico",
-    apple: "/apple-touch-icon.png",
-  },
+  alternates: {
+    canonical: 'https://khurshidalom.in',
+  }
 };
 
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import InteractiveBackground from '@/components/InteractiveBackground';
+
+import { ThemeProvider } from '@/components/ThemeProvider';
 
 export default function RootLayout({
   children,
@@ -73,11 +74,18 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col">
-        <Navbar />
-        {children}
-        <Footer />
+      <body className="min-h-full flex flex-col relative bg-background text-foreground noise-overlay">
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
+          <InteractiveBackground />
+          
+          <div className="relative z-10 flex flex-col min-h-screen">
+            <Navbar />
+            {children}
+            <Footer />
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -17,7 +17,7 @@ export default function AdminLogin() {
     setError('');
 
     try {
-      const response = await fetch('https://kode.devkayy.in/api/auth.php', {
+      const response = await fetch('/api/auth.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, password })

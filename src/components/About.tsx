@@ -1,110 +1,80 @@
 "use client";
 
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Briefcase, GraduationCap, MapPin } from 'lucide-react';
+import React, { useRef } from 'react';
+import Image from 'next/image';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useGSAP } from '@gsap/react';
 
-const timeline = [
-  {
-    type: "experience",
-    title: "Full-Stack Developer",
-    org: "Freelance",
-    period: "2022 – Present",
-    desc: "Delivering custom, high-performance web and mobile solutions for clients globally.",
-    icon: <Briefcase className="w-5 h-5" />
-  },
-  {
-    type: "education",
-    title: "Master of Computer Applications",
-    org: "Chandigarh University",
-    period: "2024 – 2026",
-    desc: "Focusing on advanced cloud architectures and scalable web systems.",
-    icon: <GraduationCap className="w-5 h-5" />
-  },
-  {
-    type: "education",
-    title: "Bachelor of Computer Applications",
-    org: "Bholanath College",
-    period: "2020 – 2023",
-    desc: "Built a strong foundation in computer science principles and software engineering.",
-    icon: <GraduationCap className="w-5 h-5" />
-  }
-];
+gsap.registerPlugin(ScrollTrigger);
 
 export default function About() {
+  const container = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    gsap.fromTo(".about-reveal",
+      { y: 30, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        stagger: 0.1,
+        duration: 0.8,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: container.current,
+          start: "top 80%",
+        }
+      }
+    );
+  }, { scope: container });
+
   return (
-    <section id="about" className="py-32 px-6 bg-[#050505]">
-      <div className="mx-auto max-w-6xl">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mb-16"
-        >
-          <h2 className="text-[10vw] md:text-[8vw] lg:text-[80px] font-bold tracking-tighter text-white leading-none uppercase mb-6">
-            Background
-          </h2>
-          <div className="w-full h-[1px] bg-white/10" />
-        </motion.div>
+    <section ref={container} id="about" className="py-24 px-6 max-w-7xl mx-auto w-full relative z-10">
+      <div className="about-reveal mb-12">
+        <p className="text-primary font-display mb-3 text-sm font-medium tracking-wide uppercase">About</p>
+        <h2 className="font-display text-foreground text-3xl font-bold md:text-4xl">A bit about me</h2>
+      </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-          
-          {/* Main About Box */}
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="lg:col-span-5 bg-white/[0.02] border border-white/5 rounded-3xl p-8 md:p-12 flex flex-col justify-between relative overflow-hidden"
-          >
-            <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
-            
-            <div>
-              <div className="flex items-center gap-2 text-white/50 text-sm tracking-widest uppercase mb-8">
-                <MapPin className="w-4 h-4" /> Based in India
-              </div>
-              <p className="text-xl md:text-2xl text-zinc-300 font-light leading-relaxed">
-                I am a passionate <span className="text-white font-medium">Full-Stack Developer</span> specializing in building high-performance web and mobile applications with premium aesthetics and robust architectures.
-              </p>
-            </div>
-            
-            <div className="mt-12 pt-8 border-t border-white/10">
-              <p className="text-white/50 text-sm leading-relaxed">
-                Technology has always fascinated me because it allows ideas to become real-world solutions. Every project teaches me something new.
-              </p>
-            </div>
-          </motion.div>
+      <div className="grid items-start gap-12 md:grid-cols-5">
 
-          {/* Timeline / Experience Bento */}
-          <div className="lg:col-span-7 grid grid-cols-1 md:grid-cols-2 gap-6">
-            {timeline.map((item, i) => (
-              <motion.div 
-                key={i} 
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className={`bg-white/[0.02] border border-white/5 rounded-3xl p-8 flex flex-col ${i === 0 ? 'md:col-span-2' : ''}`}
-              >
-                <div className="flex items-start justify-between mb-6">
-                  <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-white">
-                    {item.icon}
-                  </div>
-                  <span className="text-xs font-medium text-white/40 tracking-widest uppercase px-3 py-1 rounded-full border border-white/10">
-                    {item.period}
-                  </span>
-                </div>
-                
-                <h3 className="text-xl font-bold text-white tracking-tight mb-2">{item.title}</h3>
-                <div className="text-sm font-medium text-white/60 mb-4">{item.org}</div>
-                
-                <p className="text-sm text-zinc-400 leading-relaxed mt-auto">
-                  {item.desc}
-                </p>
-              </motion.div>
-            ))}
+        <div className="about-reveal space-y-5 md:col-span-3">
+          <p className="text-muted-foreground leading-relaxed">
+            I've been building robust web applications and digital solutions. In that time, I've worked on complex systems, immersive user interfaces, and tools where the frontend needs to handle real complexity — deep forms, high performance, and scalable architectures.
+          </p>
+          <p className="text-muted-foreground leading-relaxed">
+            My approach is straightforward: understand the problem, design the architecture, then write code that's maintainable and doesn't fall apart when requirements change. I care about component reusability, consistent design systems, and making sure the people using the software can actually get their work done efficiently.
+          </p>
+          <p className="text-muted-foreground leading-relaxed">
+            Most of my work has been in React, Next.js, and TypeScript. I've built extensively with modern design systems and prefer working in environments where the frontend is taken seriously — not just an afterthought.
+          </p>
+          <p className="text-muted-foreground leading-relaxed">
+            Beyond client work, I am the founder of <strong className="text-foreground font-semibold">DailyAxom</strong>, a platform I started building in 2026. It reflects my passion for creating scalable products from the ground up, handling everything from the initial architecture to the final user experience.
+          </p>
+
+          <div className="pt-6 mt-6 border-t border-border">
+            <h3 className="font-display text-foreground text-lg font-bold mb-4">Core Technologies</h3>
+            <div className="flex flex-wrap gap-2">
+              {['React', 'Next.js', 'TypeScript', 'Node.js', 'Tailwind CSS', 'React Native', 'Framer Motion', 'PostgreSQL', 'MySQL', 'PHP', 'GSAP'].map(tech => (
+                <span key={tech} className="px-4 py-2 bg-muted/20 text-xs font-medium tracking-wide text-muted-foreground rounded-full border border-border hover:border-primary/50 hover:text-foreground transition-colors cursor-default">
+                  {tech}
+                </span>
+              ))}
+            </div>
           </div>
-
         </div>
+
+        <div className="about-reveal md:col-span-2">
+          <div className="border-border group hover:border-primary/40 relative aspect-square overflow-hidden rounded-xl border transition-all duration-500 hover:shadow-[0_0_0_1px_rgba(249,115,22,0.15),0_8px_24px_rgba(249,115,22,0.15)] bg-primary/10">
+            <Image
+              src="/khurshid-hero.png"
+              alt="Khurshid Alom"
+              fill
+              className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+            />
+            <div className="from-background/40 absolute inset-0 bg-gradient-to-t to-transparent transition-opacity duration-500 group-hover:opacity-0"></div>
+          </div>
+        </div>
+
       </div>
     </section>
   );
