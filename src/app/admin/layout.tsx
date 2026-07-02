@@ -27,7 +27,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     router.push('/admin/login');
   };
 
-  if (loading) return <div className="min-h-screen bg-black flex items-center justify-center text-white">Loading...</div>;
+  if (loading) return <div className="min-h-screen bg-background flex items-center justify-center text-foreground">Loading...</div>;
 
   if (pathname === '/admin/login') {
     return <>{children}</>;
@@ -36,33 +36,33 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   if (!isAuthenticated) return null;
 
   return (
-    <div className="min-h-screen bg-black flex">
+    <div className="min-h-screen bg-background flex text-foreground font-sans">
       {/* Sidebar */}
-      <aside className="w-64 bg-zinc-950 border-r border-zinc-900 flex flex-col hidden md:flex">
-        <div className="p-6 border-b border-zinc-900">
-          <h2 className="text-xl font-bold text-white tracking-tight">Khurshid Admin</h2>
+      <aside className="w-64 bg-background/50 backdrop-blur-md border-r border-border flex flex-col hidden md:flex z-10">
+        <div className="p-6 border-b border-border">
+          <h2 className="text-xl font-display font-bold text-foreground tracking-tight">Khurshid Admin</h2>
         </div>
         <nav className="flex-1 p-4 flex flex-col gap-2">
           <Link 
             href="/admin" 
-            className={`flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-colors ${pathname === '/admin' ? 'bg-white text-black' : 'text-zinc-400 hover:text-white hover:bg-zinc-900'}`}
+            className={`flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-colors ${pathname === '/admin' ? 'bg-primary text-primary-foreground' : 'text-muted-foreground hover:text-foreground hover:bg-muted/20'}`}
           >
             <LayoutDashboard size={18} /> Dashboard
           </Link>
           <Link 
             href="/admin/projects" 
-            className={`flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-colors ${pathname.includes('/admin/projects') ? 'bg-white text-black' : 'text-zinc-400 hover:text-white hover:bg-zinc-900'}`}
+            className={`flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-colors ${pathname.includes('/admin/projects') ? 'bg-primary text-primary-foreground' : 'text-muted-foreground hover:text-foreground hover:bg-muted/20'}`}
           >
             <Briefcase size={18} /> Projects
           </Link>
           <Link 
             href="/admin/blogs" 
-            className={`flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-colors ${pathname.includes('/admin/blogs') ? 'bg-white text-black' : 'text-zinc-400 hover:text-white hover:bg-zinc-900'}`}
+            className={`flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-colors ${pathname.includes('/admin/blogs') ? 'bg-primary text-primary-foreground' : 'text-muted-foreground hover:text-foreground hover:bg-muted/20'}`}
           >
             <FileText size={18} /> Blogs
           </Link>
         </nav>
-        <div className="p-4 border-t border-zinc-900">
+        <div className="p-4 border-t border-border">
           <button 
             onClick={handleLogout}
             className="flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium text-red-500 hover:bg-red-500/10 transition-colors w-full"
@@ -73,7 +73,8 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       </aside>
 
       {/* Main Content */}
-      <main className="flex-1 bg-black overflow-y-auto">
+      <main className="flex-1 bg-background relative overflow-y-auto">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(249,115,22,0.03),transparent_50%)] pointer-events-none"></div>
         {children}
       </main>
     </div>

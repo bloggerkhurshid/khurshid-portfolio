@@ -40,15 +40,16 @@ export default function AdminLogin() {
   };
 
   return (
-    <div className="min-h-screen bg-black flex items-center justify-center px-6">
-      <div className="w-full max-w-md bg-zinc-950 border border-zinc-900 rounded-2xl p-8">
+    <div className="min-h-screen bg-background flex items-center justify-center px-6 relative">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(249,115,22,0.05),transparent_50%)] pointer-events-none"></div>
+      <div className="w-full max-w-md bg-primary/5 border border-border backdrop-blur-md rounded-3xl p-8 relative z-10 shadow-[0_8px_30px_rgba(249,115,22,0.08)]">
         <div className="flex justify-center mb-8">
-          <div className="w-12 h-12 rounded-full bg-zinc-900 flex items-center justify-center text-white">
-            <Lock size={24} />
+          <div className="w-14 h-14 rounded-2xl bg-primary/20 flex items-center justify-center text-primary shadow-inner">
+            <Lock size={26} />
           </div>
         </div>
-        <h1 className="text-2xl font-bold text-white text-center mb-2 tracking-tight">Admin Access</h1>
-        <p className="text-zinc-400 text-center mb-8 text-sm">Please sign in to manage your portfolio.</p>
+        <h1 className="text-3xl font-display font-bold text-foreground text-center mb-2 tracking-tight">Admin Access</h1>
+        <p className="text-muted-foreground text-center mb-8 text-sm font-medium">Please sign in to manage your portfolio.</p>
 
         {error && (
           <div className="bg-red-500/10 border border-red-500/50 text-red-500 text-sm px-4 py-3 rounded-lg mb-6">
@@ -58,23 +59,23 @@ export default function AdminLogin() {
 
         <form onSubmit={handleLogin} className="flex flex-col gap-5">
           <div>
-            <label className="block text-sm font-medium text-zinc-300 mb-2">Username</label>
+            <label className="block text-sm font-bold text-foreground mb-2 font-display tracking-wide">Username</label>
             <input 
               type="text" 
               value={username}
               onChange={e => setUsername(e.target.value)}
-              className="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-zinc-500 transition-colors"
+              className="w-full bg-background/50 backdrop-blur-sm border border-border rounded-xl px-4 py-3.5 text-foreground focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/50 transition-all shadow-inner"
               placeholder="Enter username"
               required
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-zinc-300 mb-2">Password</label>
+            <label className="block text-sm font-bold text-foreground mb-2 font-display tracking-wide">Password</label>
             <input 
               type="password" 
               value={password}
               onChange={e => setPassword(e.target.value)}
-              className="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-zinc-500 transition-colors"
+              className="w-full bg-background/50 backdrop-blur-sm border border-border rounded-xl px-4 py-3.5 text-foreground focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/50 transition-all shadow-inner"
               placeholder="••••••••"
               required
             />
@@ -82,7 +83,7 @@ export default function AdminLogin() {
           <button 
             type="submit" 
             disabled={loading}
-            className="w-full bg-white text-black font-bold rounded-lg px-4 py-3 mt-2 hover:bg-zinc-200 transition-colors disabled:opacity-50"
+            className="w-full bg-primary text-primary-foreground font-bold font-display tracking-wide rounded-xl px-4 py-4 mt-4 hover:bg-primary/90 transition-all shadow-lg shadow-primary/25 hover:shadow-primary/40 hover:-translate-y-0.5 disabled:opacity-50 disabled:hover:translate-y-0 disabled:hover:shadow-primary/25"
           >
             {loading ? 'Authenticating...' : 'Sign In'}
           </button>
