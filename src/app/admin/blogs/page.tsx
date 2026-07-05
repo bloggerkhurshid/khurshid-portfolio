@@ -3,7 +3,8 @@
 import React, { useState, useEffect } from 'react';
 import { Plus, Trash2, Edit2, ExternalLink } from 'lucide-react';
 import dynamic from 'next/dynamic';
-const JoditEditor = dynamic(() => import('jodit-react'), { ssr: false });
+
+const BlogEditor = dynamic(() => import('@/components/Editor'), { ssr: false });
 
 interface Blog {
   id: number;
@@ -30,7 +31,7 @@ export default function AdminBlogs() {
 
   const fetchBlogs = async () => {
     try {
-      const res = await fetch('/api/blogs.php');
+      const res = await fetch('/api/blogs');
       const data = await res.json();
       setBlogs(Array.isArray(data) ? data : []);
     } catch (err) {
@@ -70,7 +71,7 @@ export default function AdminBlogs() {
     
     if (editingId) {
       // Update
-      await fetch(`/api/blogs.php?id=${editingId}`, {
+      await fetch(`/api/blogs?id=${editingId}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
         body: JSON.stringify({ title, slug, author, content })
@@ -84,7 +85,7 @@ export default function AdminBlogs() {
       data.append('content', content);
       if (image) data.append('image', image);
 
-      await fetch('/api/blogs.php', {
+      await fetch('/api/blogs', {
         method: 'POST',
         headers: { 'Authorization': `Bearer ${token}` },
         body: data
@@ -99,7 +100,7 @@ export default function AdminBlogs() {
     if (!confirm('Are you sure you want to delete this blog?')) return;
     const token = localStorage.getItem('admin_token');
     
-    await fetch(`/api/blogs.php?id=${id}`, {
+    await fetch(`/api/blogs?id=${id}`, {
       method: 'DELETE',
       headers: { 'Authorization': `Bearer ${token}` }
     });
@@ -185,11 +186,10 @@ export default function AdminBlogs() {
 
               <div>
                 <label className="block text-sm font-bold font-display text-foreground mb-1.5">Content</label>
-                <div className="bg-background rounded-xl overflow-hidden border border-border shadow-sm text-black">
-                  <JoditEditor
+                <div className="bg-background rounded-xl overflow-hidden border border-border shadow-sm text-foreground">
+                  <BlogEditor
                     value={content}
-                    config={{ theme: 'dark', height: 500, readonly: false }}
-                    onBlur={newContent => setContent(newContent)}
+                    onChange={setContent}
                   />
                 </div>
               </div>

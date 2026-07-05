@@ -18,8 +18,8 @@ export default function AdminDashboard() {
     const fetchStats = async () => {
       try {
         const [projRes, blogRes] = await Promise.all([
-          fetch('/api/projects.php'),
-          fetch('/api/blogs.php')
+          fetch('/api/projects'),
+          fetch('/api/blogs')
         ]);
         const projData = await projRes.json();
         const blogData = await blogRes.json();

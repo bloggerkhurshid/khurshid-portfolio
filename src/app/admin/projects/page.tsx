@@ -28,7 +28,7 @@ export default function AdminProjects() {
 
   const fetchProjects = async () => {
     try {
-      const res = await fetch('/api/projects.php');
+      const res = await fetch('/api/projects');
       const data = await res.json();
       setProjects(Array.isArray(data) ? data : []);
     } catch (err) {
@@ -69,7 +69,7 @@ export default function AdminProjects() {
     
     if (editingId) {
       // Update (using JSON)
-      await fetch(`/api/projects.php?id=${editingId}`, {
+      await fetch(`/api/projects?id=${editingId}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
         body: JSON.stringify(formData)
@@ -80,7 +80,7 @@ export default function AdminProjects() {
       Object.entries(formData).forEach(([key, value]) => data.append(key, value));
       if (image) data.append('image', image);
 
-      await fetch('/api/projects.php', {
+      await fetch('/api/projects', {
         method: 'POST',
         headers: { 'Authorization': `Bearer ${token}` },
         body: data
@@ -95,7 +95,7 @@ export default function AdminProjects() {
     if (!confirm('Are you sure you want to delete this project?')) return;
     const token = localStorage.getItem('admin_token');
     
-    await fetch(`/api/projects.php?id=${id}`, {
+    await fetch(`/api/projects?id=${id}`, {
       method: 'DELETE',
       headers: { 'Authorization': `Bearer ${token}` }
     });
