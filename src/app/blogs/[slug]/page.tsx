@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import BackButton from '@/components/BackButton';
 import { Metadata, ResolvingMetadata } from 'next';
+import Script from 'next/script';
 
 interface Blog {
   id: number;
@@ -127,7 +128,8 @@ export default async function BlogPost({ params }: Props) {
     <main className="min-h-screen pt-32 pb-20 bg-background relative z-10">
       <article className="mx-auto max-w-7xl px-6">
         <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-          <script
+          <Script
+            id="json-ld"
             type="application/ld+json"
             dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
           />

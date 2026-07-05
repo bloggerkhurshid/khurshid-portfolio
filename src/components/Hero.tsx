@@ -77,8 +77,8 @@ export default function Hero() {
               <p className="text-muted-foreground mt-1 text-xs uppercase tracking-wider font-semibold">Projects</p>
             </div>
             <div className="border-border/40 border-l pl-8 sm:pl-10">
-              <p className="font-display text-foreground text-2xl font-bold">React</p>
-              <p className="text-muted-foreground mt-1 text-xs uppercase tracking-wider font-semibold">Core Focus</p>
+              <p className="font-display text-foreground text-2xl font-bold">Web & Mobile</p>
+              <p className="text-muted-foreground mt-1 text-xs uppercase tracking-wider font-semibold">Development</p>
             </div>
           </div>
           

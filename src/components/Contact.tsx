@@ -2,6 +2,7 @@
 
 import React, { useRef } from 'react';
 import { Mail } from 'lucide-react';
+import { FaFacebook, FaInstagram } from 'react-icons/fa';
 import { GithubIcon as Github, LinkedinIcon as Linkedin } from './Icons';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -40,17 +41,25 @@ export default function Contact() {
         </p>
 
         <div className="flex flex-wrap justify-center gap-3 md:gap-4">
-          <a href="mailto:khurshid.sde@gmail.com" className="flex items-center gap-3 bg-card border border-border hover:border-primary/50 text-foreground transition-all duration-300 px-5 py-3 md:px-6 md:py-4 rounded-xl shadow-sm hover:shadow-[0_8px_24px_rgba(249,115,22,0.1)] hover:-translate-y-1" aria-label="Email">
+          <a href="mailto:khurshid@projuktisoft.com" className="flex items-center gap-3 bg-card border border-border hover:border-primary/50 text-foreground transition-all duration-300 px-5 py-3 md:px-6 md:py-4 rounded-xl shadow-sm hover:shadow-[0_8px_24px_rgba(249,115,22,0.1)] hover:-translate-y-1" aria-label="Email">
             <Mail size={20} className="text-primary" />
             <span className="font-semibold text-sm">Email Me</span>
           </a>
-          <a href="#" className="flex items-center gap-3 bg-card border border-border hover:border-primary/50 text-foreground transition-all duration-300 px-5 py-3 md:px-6 md:py-4 rounded-xl shadow-sm hover:shadow-[0_8px_24px_rgba(249,115,22,0.1)] hover:-translate-y-1" aria-label="GitHub">
+          <a href="https://github.com/bloggerkhurshid" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 bg-card border border-border hover:border-primary/50 text-foreground transition-all duration-300 px-5 py-3 md:px-6 md:py-4 rounded-xl shadow-sm hover:shadow-[0_8px_24px_rgba(249,115,22,0.1)] hover:-translate-y-1" aria-label="GitHub">
             <Github size={20} className="text-primary" />
             <span className="font-semibold text-sm">GitHub</span>
           </a>
-          <a href="#" className="flex items-center gap-3 bg-card border border-border hover:border-primary/50 text-foreground transition-all duration-300 px-5 py-3 md:px-6 md:py-4 rounded-xl shadow-sm hover:shadow-[0_8px_24px_rgba(249,115,22,0.1)] hover:-translate-y-1" aria-label="LinkedIn">
+          <a href="https://www.linkedin.com/in/bloggerkhurshid/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 bg-card border border-border hover:border-primary/50 text-foreground transition-all duration-300 px-5 py-3 md:px-6 md:py-4 rounded-xl shadow-sm hover:shadow-[0_8px_24px_rgba(249,115,22,0.1)] hover:-translate-y-1" aria-label="LinkedIn">
             <Linkedin size={20} className="text-primary" />
             <span className="font-semibold text-sm">LinkedIn</span>
+          </a>
+          <a href="https://www.instagram.com/khurshidalom.in/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 bg-card border border-border hover:border-primary/50 text-foreground transition-all duration-300 px-5 py-3 md:px-6 md:py-4 rounded-xl shadow-sm hover:shadow-[0_8px_24px_rgba(249,115,22,0.1)] hover:-translate-y-1" aria-label="Instagram">
+            <FaInstagram size={20} className="text-primary" />
+            <span className="font-semibold text-sm">Instagram</span>
+          </a>
+          <a href="https://www.facebook.com/khurshid.io" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 bg-card border border-border hover:border-primary/50 text-foreground transition-all duration-300 px-5 py-3 md:px-6 md:py-4 rounded-xl shadow-sm hover:shadow-[0_8px_24px_rgba(249,115,22,0.1)] hover:-translate-y-1" aria-label="Facebook">
+            <FaFacebook size={20} className="text-primary" />
+            <span className="font-semibold text-sm">Facebook</span>
           </a>
         </div>
       </div>

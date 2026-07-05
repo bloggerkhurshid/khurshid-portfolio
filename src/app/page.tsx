@@ -3,6 +3,7 @@ import About from '@/components/About';
 import Projects from '@/components/Projects';
 import BlogSection from '@/components/BlogSection';
 import Contact from '@/components/Contact';
+import Script from 'next/script';
 
 async function getProjects() {
   try {
@@ -33,7 +34,9 @@ export default async function Home() {
     jobTitle: 'Full Stack Developer',
     sameAs: [
       'https://github.com/bloggerkhurshid',
-      'https://linkedin.com/in/khurshid-alom' // Adjust if needed
+      'https://www.linkedin.com/in/bloggerkhurshid/',
+      'https://www.instagram.com/khurshidalom.in/',
+      'https://www.facebook.com/khurshid.io'
     ],
     knowsAbout: ['DailyAxom', 'Web Development', 'React', 'Next.js', 'React Native', 'PHP', 'Software Engineering']
   };
@@ -44,7 +47,8 @@ export default async function Home() {
 
   return (
     <main className="min-h-screen bg-background">
-      <script
+      <Script
+        id="json-ld"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
