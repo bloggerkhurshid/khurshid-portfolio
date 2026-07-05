@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
-import { ArrowLeft, ExternalLink } from 'lucide-react';
+import { ExternalLink } from 'lucide-react';
+import BackButton from '@/components/BackButton';
 import { GithubIcon as Github } from '@/components/Icons';
 import { Metadata, ResolvingMetadata } from 'next';
 
@@ -96,9 +97,7 @@ export default async function ProjectDetails({ params }: Props) {
     <main className="min-h-screen pt-32 pb-20 px-6 bg-background relative z-10">
       <article className="mx-auto max-w-7xl">
         <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-          <Link href="/projects" className="inline-flex items-center gap-2 text-muted-foreground font-medium hover:text-foreground transition-colors mb-12 uppercase tracking-widest text-xs">
-            <ArrowLeft size={16} /> Back to Projects
-          </Link>
+          <BackButton label="Back to Projects" />
           
           <h1 className="font-display text-5xl md:text-7xl font-bold tracking-tight text-foreground mb-8 leading-tight">{project.title}</h1>
           

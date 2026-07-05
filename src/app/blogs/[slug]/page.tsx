@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { ArrowLeft } from 'lucide-react';
+import BackButton from '@/components/BackButton';
 import { Metadata, ResolvingMetadata } from 'next';
 
 interface Blog {
@@ -131,9 +131,7 @@ export default async function BlogPost({ params }: Props) {
             type="application/ld+json"
             dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
           />
-          <Link href="/blogs" className="inline-flex items-center gap-2 text-muted-foreground font-medium hover:text-foreground transition-colors mb-12 uppercase tracking-widest text-xs">
-            <ArrowLeft size={16} /> Back to Writing
-          </Link>
+          <BackButton label="Back to Writing" />
           
           <h1 className="font-display text-4xl md:text-6xl font-bold tracking-tight text-foreground mb-8 leading-tight">{post.title}</h1>
           

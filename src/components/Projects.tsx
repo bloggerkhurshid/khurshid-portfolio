@@ -58,43 +58,52 @@ export default function Projects({ initialProjects = [] }: { initialProjects?: P
       ) : (
         <div className="grid gap-6 md:grid-cols-2">
           {initialProjects.map((project) => (
-            <div key={project.id} className="project-reveal group bg-card border-border hover:border-primary/30 relative rounded-xl border p-6 transition-colors duration-300 md:p-8">
+            <div key={project.id} className="project-reveal group bg-card border-border hover:border-primary/30 relative rounded-xl border overflow-hidden transition-colors duration-300 flex flex-col">
+              <Link href={`/projects/${project.slug}`} className="block relative w-full aspect-video overflow-hidden bg-muted/20 border-b border-border">
+                <img 
+                  src={project.image_path ? `https://kode.devkayy.in${project.image_path}` : '/project-three.jpg'} 
+                  alt={project.title}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+              </Link>
               
-              <div className="mb-4 flex items-start justify-between">
-                <Link href={`/projects/${project.slug}`}>
-                  <h3 className="font-display text-foreground group-hover:text-primary text-xl font-semibold transition-colors">
-                    {project.title}
-                  </h3>
-                </Link>
-                {/* Optional tag */}
-                <div className="ml-4 flex shrink-0 items-center gap-2">
-                  {!project.github_url && (
-                    <span className="text-muted-foreground flex items-center gap-1 text-xs">
-                      <Lock className="w-3 h-3" /> Client
+              <div className="p-6 md:p-8 flex-1 flex flex-col">
+                <div className="mb-4 flex items-start justify-between">
+                  <Link href={`/projects/${project.slug}`}>
+                    <h3 className="font-display text-foreground group-hover:text-primary text-xl font-semibold transition-colors">
+                      {project.title}
+                    </h3>
+                  </Link>
+                  {/* Optional tag */}
+                  <div className="ml-4 flex shrink-0 items-center gap-2">
+                    {!project.github_url && (
+                      <span className="text-muted-foreground flex items-center gap-1 text-xs">
+                        <Lock className="w-3 h-3" /> Client
+                      </span>
+                    )}
+                  </div>
+                </div>
+
+                <p className="text-muted-foreground mb-6 text-sm leading-relaxed line-clamp-4">
+                  {project.description}
+                </p>
+
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {project.tech_stacks.split(',').slice(0, 5).map(tag => (
+                    <span key={tag} className="text-primary/80 bg-primary/10 rounded-md px-2.5 py-1 text-xs font-medium">
+                      {tag.trim()}
                     </span>
-                  )}
+                  ))}
                 </div>
+
+                {project.live_url && (
+                  <div className="mt-auto pt-4 border-t border-border/50">
+                    <a href={project.live_url} target="_blank" rel="noreferrer" className="text-foreground hover:text-primary inline-flex items-center gap-1 text-sm font-medium transition-colors">
+                      <ExternalLink size={16} /> Live Project
+                    </a>
+                  </div>
+                )}
               </div>
-
-              <p className="text-muted-foreground mb-6 text-sm leading-relaxed line-clamp-4">
-                {project.description}
-              </p>
-
-              <div className="flex flex-wrap gap-2 mb-6">
-                {project.tech_stacks.split(',').slice(0, 5).map(tag => (
-                  <span key={tag} className="text-primary/80 bg-primary/10 rounded-md px-2.5 py-1 text-xs font-medium">
-                    {tag.trim()}
-                  </span>
-                ))}
-              </div>
-
-              {project.live_url && (
-                <div className="mt-auto">
-                  <a href={project.live_url} target="_blank" rel="noreferrer" className="text-foreground hover:text-primary inline-flex items-center gap-1 text-sm font-medium transition-colors">
-                    <ExternalLink size={16} /> Live Project
-                  </a>
-                </div>
-              )}
             </div>
           ))}
         </div>

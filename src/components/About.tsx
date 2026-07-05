@@ -51,44 +51,71 @@ export default function About() {
         </p>
 
         <div className="pt-8 mt-8 border-t border-border">
-          <h3 className="font-display text-foreground text-lg font-bold mb-6">Core Technologies</h3>
-          <div className="flex flex-wrap gap-3">
+          <h3 className="font-display text-foreground text-xl font-bold mb-8">Core Technologies</h3>
+          <div className="flex flex-col gap-8">
             {[
-              { name: 'HTML5', icon: FaHtml5 },
-              { name: 'CSS3', icon: FaCss3Alt },
-              { name: 'React', icon: FaReact },
-              { name: 'Next.js', icon: SiNextdotjs },
-              { name: 'TypeScript', icon: SiTypescript },
-              { name: 'Redux', icon: SiRedux },
-              { name: 'GraphQL', icon: SiGraphql },
-              { name: 'Tailwind CSS', icon: SiTailwindcss },
-              { name: 'Bootstrap', icon: FaBootstrap },
-              { name: 'Node.js', icon: FaNodeJs },
-              { name: 'Express.js', icon: SiExpress },
-              { name: 'Prisma', icon: SiPrisma },
-              { name: 'MongoDB', icon: SiMongodb },
-              { name: 'PostgreSQL', icon: SiPostgresql },
-              { name: 'MySQL', icon: SiMysql },
-              { name: 'PHP', icon: FaPhp },
-              { name: 'React Native', icon: FaReact },
-              { name: 'Java', icon: FaJava },
-              { name: 'Android Studio', icon: SiAndroidstudio },
-              { name: 'Firebase', icon: SiFirebase },
-              { name: 'Framer Motion', icon: SiFramer },
-              { name: 'GSAP', icon: SiGreensock },
-              { name: 'Figma', icon: FaFigma },
-              { name: 'Git', icon: FaGitAlt },
-              { name: 'GitHub', icon: FaGithub },
-              { name: 'Docker', icon: FaDocker },
-              { name: 'AWS', icon: FaAws },
-              { name: 'Vercel', icon: SiVercel },
-              { name: 'Netlify', icon: SiNetlify },
-              { name: 'Postman', icon: SiPostman },
-            ].map(tech => (
-              <span key={tech.name} className="flex items-center gap-2 px-5 py-2.5 bg-muted/20 text-xs font-medium tracking-wide text-muted-foreground rounded-full border border-border hover:border-primary/50 hover:text-foreground transition-colors cursor-default">
-                <tech.icon className="text-sm" />
-                {tech.name}
-              </span>
+              {
+                category: "Frontend",
+                items: [
+                  { name: 'HTML5', icon: FaHtml5 },
+                  { name: 'CSS3', icon: FaCss3Alt },
+                  { name: 'React', icon: FaReact },
+                  { name: 'Next.js', icon: SiNextdotjs },
+                  { name: 'TypeScript', icon: SiTypescript },
+                  { name: 'Redux', icon: SiRedux },
+                  { name: 'Tailwind CSS', icon: SiTailwindcss },
+                  { name: 'Bootstrap', icon: FaBootstrap },
+                  { name: 'Framer Motion', icon: SiFramer },
+                  { name: 'GSAP', icon: SiGreensock },
+                ]
+              },
+              {
+                category: "Backend & Database",
+                items: [
+                  { name: 'Node.js', icon: FaNodeJs },
+                  { name: 'Express.js', icon: SiExpress },
+                  { name: 'GraphQL', icon: SiGraphql },
+                  { name: 'Prisma', icon: SiPrisma },
+                  { name: 'MongoDB', icon: SiMongodb },
+                  { name: 'PostgreSQL', icon: SiPostgresql },
+                  { name: 'MySQL', icon: SiMysql },
+                  { name: 'PHP', icon: FaPhp },
+                  { name: 'Firebase', icon: SiFirebase },
+                ]
+              },
+              {
+                category: "Mobile app",
+                items: [
+                  { name: 'React Native', icon: FaReact },
+                  { name: 'Java', icon: FaJava },
+                  { name: 'Android Studio', icon: SiAndroidstudio },
+                ]
+              },
+              {
+                category: "Tools & DevOps",
+                items: [
+                  { name: 'Git', icon: FaGitAlt },
+                  { name: 'GitHub', icon: FaGithub },
+                  { name: 'Docker', icon: FaDocker },
+                  { name: 'AWS', icon: FaAws },
+                  { name: 'Vercel', icon: SiVercel },
+                  { name: 'Netlify', icon: SiNetlify },
+                  { name: 'Postman', icon: SiPostman },
+                  { name: 'Figma', icon: FaFigma },
+                ]
+              }
+            ].map(techGroup => (
+              <div key={techGroup.category}>
+                <h4 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-4">{techGroup.category}</h4>
+                <div className="flex flex-wrap gap-3">
+                  {techGroup.items.map(tech => (
+                    <span key={tech.name} className="flex items-center gap-2 px-5 py-2.5 bg-muted/20 text-xs font-medium tracking-wide text-muted-foreground rounded-full border border-border hover:border-primary/50 hover:text-foreground transition-colors cursor-default">
+                      <tech.icon className="text-sm" />
+                      {tech.name}
+                    </span>
+                  ))}
+                </div>
+              </div>
             ))}
           </div>
         </div>
