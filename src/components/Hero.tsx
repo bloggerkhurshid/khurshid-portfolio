@@ -31,9 +31,7 @@ export default function Hero() {
         <div className="w-full lg:col-span-3">
           
           <h1 className="hero-reveal font-display text-foreground mt-8 lg:mt-0 mb-0 lg:mb-6 text-4xl leading-[1.15] font-bold md:text-5xl lg:text-6xl xl:text-7xl">
-            Crafting bespoke<br/>
-            <span className="text-primary">CMS &amp; LMS</span><br/>
-            experiences.
+            Khurshid <span className="text-primary">Alom</span>
           </h1>
 
           {/* Mobile Image (Visible only below lg breakpoint) */}
@@ -57,7 +55,7 @@ export default function Hero() {
           </div>
           
           <p className="hero-reveal text-muted-foreground mb-10 max-w-xl text-lg leading-relaxed md:text-xl">
-            I'm Khurshid Alom, a frontend-focused full-stack developer. I leverage React.js and Next.js to architect high-performance, scalable platforms tailored to your exact business needs.
+            As a frontend-focused full-stack developer, I specialize in architecting high-performance, scalable platforms using React and Next.js. With deep expertise in developing custom Content Management Systems (CMS) and Learning Management Systems (LMS), I deliver tailored web solutions that drive business success.
           </p>
           
           <div className="hero-reveal flex flex-wrap items-center gap-4 sm:gap-6">
@@ -71,7 +69,7 @@ export default function Hero() {
           
           <div className="hero-reveal mt-14 flex items-center gap-8 sm:gap-10">
             <div>
-              <p className="font-display text-foreground text-2xl font-bold">2+</p>
+              <p className="font-display text-foreground text-2xl font-bold">3+</p>
               <p className="text-muted-foreground mt-1 text-xs uppercase tracking-wider font-semibold">Years Exp.</p>
             </div>
             <div className="border-border/40 border-l pl-8 sm:pl-10">
