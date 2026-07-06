@@ -43,17 +43,18 @@ export default function Navbar() {
   }
 
   return (
-    <header 
-      className={`fixed top-0 left-1/2 -translate-x-1/2 z-50 transition-all duration-500 ease-out ${
-        scrolled 
-          ? 'translate-y-4 w-[calc(100%-2rem)] max-w-7xl bg-background/80 border border-border backdrop-blur-md rounded-full shadow-lg' 
-          : 'translate-y-0 w-full max-w-full bg-transparent border-b border-transparent'
-      }`}
-    >
-      <nav className={`mx-auto flex h-16 items-center justify-between w-full px-6 ${scrolled ? '' : 'max-w-7xl'}`}>
-        <Link href="/" className="font-display text-foreground text-lg font-semibold tracking-tight">
-          khurshidalom<span className="text-primary">.in</span>
-        </Link>
+    <header className="fixed top-0 left-0 right-0 z-50 pointer-events-none">
+      <div className={`relative mx-auto w-full max-w-7xl transition-transform duration-500 ease-out pointer-events-auto ${scrolled ? 'translate-y-4' : 'translate-y-0'}`}>
+        
+        {/* Floating Background */}
+        <div 
+          className={`absolute inset-0 mx-4 xl:mx-0 h-16 bg-background/80 border border-border backdrop-blur-md rounded-2xl shadow-lg transition-opacity duration-500 ease-out ${scrolled ? 'opacity-100' : 'opacity-0'}`}
+        />
+        
+        <nav className="relative flex h-16 items-center justify-between w-full px-8 xl:px-6">
+          <Link href="/" className="font-display text-foreground text-lg font-semibold tracking-tight">
+            khurshidalom<span className="text-primary">.in</span>
+          </Link>
 
         <div className="flex items-center gap-4">
           {/* Desktop Nav */}
@@ -86,8 +87,8 @@ export default function Navbar() {
 
       {/* Mobile Nav Menu */}
       {isOpen && (
-        <div className={`md:hidden absolute left-0 w-full bg-background/95 backdrop-blur-md shadow-2xl ${
-          scrolled ? 'top-[calc(100%+0.5rem)] rounded-3xl border border-border' : 'top-full border-b border-border'
+        <div className={`md:hidden absolute left-4 right-4 bg-background/95 backdrop-blur-md shadow-2xl transition-all duration-300 ${
+          scrolled ? 'top-[calc(100%+1rem)] rounded-2xl border border-border' : 'top-full rounded-2xl border border-border mt-2'
         }`}>
           <ul className="flex flex-col items-center gap-6 py-8">
             {navItems.map((item) => (
@@ -104,6 +105,7 @@ export default function Navbar() {
           </ul>
         </div>
       )}
+      </div>
     </header>
   );
 }

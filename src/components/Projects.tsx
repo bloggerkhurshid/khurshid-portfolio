@@ -56,50 +56,52 @@ export default function Projects({ initialProjects = [] }: { initialProjects?: P
       {initialProjects.length === 0 ? (
         <div className="text-muted-foreground text-sm">No projects available.</div>
       ) : (
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {initialProjects.map((project) => (
-            <div key={project.id} className="project-reveal group bg-card border-border hover:border-primary/30 relative rounded-xl border overflow-hidden transition-colors duration-300 flex flex-col">
-              <Link href={`/projects/${project.slug}`} className="block relative w-full aspect-video overflow-hidden bg-muted/20 border-b border-border">
+            <div key={project.id} className="project-reveal group relative rounded-2xl border border-border/50 bg-card/50 hover:bg-card/80 overflow-hidden transition-all duration-500 flex flex-col hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/5 backdrop-blur-sm">
+              <Link href={`/projects/${project.slug}`} className="block relative w-full aspect-[21/9] overflow-hidden bg-muted/20">
+                <div className="absolute inset-0 bg-gradient-to-t from-card/80 group-hover:from-card/90 via-transparent to-transparent z-10 transition-colors duration-500" />
                 <img 
                   src={project.image_path ? `https://kode.devkayy.in${project.image_path}` : '/project-three.jpg'} 
                   alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
               </Link>
               
-              <div className="p-6 md:p-8 flex-1 flex flex-col">
-                <div className="mb-4 flex items-start justify-between">
-                  <Link href={`/projects/${project.slug}`}>
-                    <h3 className="font-display text-foreground group-hover:text-primary text-xl font-semibold transition-colors">
+              <div className="p-5 pt-3 md:p-6 md:pt-4 flex-1 flex flex-col relative z-20">
+                <div className="mb-2 flex items-start justify-between">
+                  <Link href={`/projects/${project.slug}`} className="group/link flex items-center gap-2">
+                    <h3 className="font-display text-foreground text-lg md:text-xl font-bold transition-colors group-hover:text-primary line-clamp-1">
                       {project.title}
                     </h3>
                   </Link>
                   {/* Optional tag */}
-                  <div className="ml-4 flex shrink-0 items-center gap-2">
+                  <div className="ml-3 flex shrink-0 items-center gap-2 mt-0.5">
                     {!project.github_url && (
-                      <span className="text-muted-foreground flex items-center gap-1 text-xs">
-                        <Lock className="w-3 h-3" /> Client
+                      <span className="text-muted-foreground flex items-center gap-1 text-[10px] uppercase tracking-wider font-semibold rounded-full bg-muted/80 px-2 py-0.5 border border-border/50">
+                        <Lock className="w-2.5 h-2.5" /> Client
                       </span>
                     )}
                   </div>
                 </div>
 
-                <p className="text-muted-foreground mb-6 text-sm leading-relaxed line-clamp-4">
+                <p className="text-muted-foreground mb-4 text-xs md:text-sm leading-snug line-clamp-2">
                   {project.description}
                 </p>
 
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {project.tech_stacks.split(',').slice(0, 5).map(tag => (
-                    <span key={tag} className="text-primary/80 bg-primary/10 rounded-md px-2.5 py-1 text-xs font-medium">
+                <div className="flex flex-wrap gap-1.5 mb-5">
+                  {project.tech_stacks.split(',').slice(0, 3).map(tag => (
+                    <span key={tag} className="text-foreground/70 bg-secondary/40 border border-border/50 rounded-full px-2.5 py-0.5 text-[11px] font-medium backdrop-blur-sm transition-colors group-hover:border-primary/20 group-hover:bg-primary/5">
                       {tag.trim()}
                     </span>
                   ))}
                 </div>
 
                 {project.live_url && (
-                  <div className="mt-auto pt-4 border-t border-border/50">
-                    <a href={project.live_url} target="_blank" rel="noreferrer" className="text-foreground hover:text-primary inline-flex items-center gap-1 text-sm font-medium transition-colors">
-                      <ExternalLink size={16} /> Live Project
+                  <div className="mt-auto">
+                    <a href={project.live_url} target="_blank" rel="noreferrer" className="text-foreground hover:text-primary inline-flex items-center gap-1.5 text-xs md:text-sm font-semibold transition-colors group/btn">
+                      View Live Project 
+                      <ExternalLink size={14} className="transition-transform duration-300 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1" />
                     </a>
                   </div>
                 )}
