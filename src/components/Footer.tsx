@@ -16,7 +16,13 @@ export default function Footer() {
       <div className="mx-auto max-w-7xl px-6 flex flex-col md:flex-row justify-between items-center gap-8">
         
         <div className="flex flex-col items-center md:items-start gap-3 text-muted-foreground">
-          <p className="text-sm">© {new Date().getFullYear()} Khurshid Alom. All rights reserved.</p>
+          <p className="text-sm">
+            © {new Date().getFullYear()}{" "}
+            <Link href="/" className="hover:text-foreground hover:underline underline-offset-4 transition-colors">
+              Khurshid Alom
+            </Link>
+            . All rights reserved.
+          </p>
         </div>
 
         <div className="flex items-center gap-6">
