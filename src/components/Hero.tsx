@@ -38,7 +38,7 @@ export default function Hero() {
           <div className="hero-reveal block lg:hidden w-full max-w-[280px] sm:max-w-sm mt-8 mb-10 mr-auto pt-6">
             <div className="group relative w-full pt-6">
               {/* The Colored Box (1:1 Aspect Ratio) */}
-              <div className="relative w-full aspect-square rounded-3xl border border-border bg-primary shadow-xl transition-all duration-500 group-hover:border-primary/40 group-hover:shadow-[0_0_0_1px_rgba(99,102,241,0.15),0_8px_24px_rgba(99,102,241,0.15)]">
+              <div className="relative w-full aspect-square rounded-3xl border border-border bg-primary shadow-xl transition-all duration-500 group-hover:border-primary/40 group-hover:shadow-[0_0_0_1px_rgba(65,105,225,0.15),0_8px_24px_rgba(65,105,225,0.15)]">
                 {/* The Pop-out Image */}
                 <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[115%] h-[120%] pointer-events-none">
                   <Image
@@ -93,7 +93,7 @@ export default function Hero() {
         <div className="hero-reveal hidden lg:block lg:col-span-2">
           <div className="group relative w-full pt-12">
             {/* The Colored Box (1:1 Aspect Ratio) */}
-            <div className="relative w-full aspect-square rounded-3xl border border-border bg-primary shadow-xl transition-all duration-500 group-hover:border-primary/40 group-hover:shadow-[0_0_0_1px_rgba(99,102,241,0.15),0_8px_24px_rgba(99,102,241,0.15)]">
+            <div className="relative w-full aspect-square rounded-3xl border border-border bg-primary shadow-xl transition-all duration-500 group-hover:border-primary/40 group-hover:shadow-[0_0_0_1px_rgba(65,105,225,0.15),0_8px_24px_rgba(65,105,225,0.15)]">
               {/* The Pop-out Image */}
               <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[120%] h-[125%] pointer-events-none z-10">
                 <Image

@@ -19,8 +19,8 @@
   --foreground: #09090b;
   --muted: #f4f4f5;
   --muted-foreground: #71717a;
-  --primary: #4688e5;
-  /* indigo for light mode for contrast */
+  --primary: #4169e1;
+  /* royal blue for light mode */
   --primary-foreground: #ffffff;
   --border: #e4e4e7;
   --card: #ffffff;
@@ -31,8 +31,8 @@
   --foreground: #fafafa;
   --muted: #27272a;
   --muted-foreground: #a1a1aa;
-  --primary: #2629de;
-  /* indigo for dark mode */
+  --primary: #4169e1;
+  /* royal blue for dark mode */
   --primary-foreground: #ffffff;
   --border: #27272a;
   --card: #09090b;
