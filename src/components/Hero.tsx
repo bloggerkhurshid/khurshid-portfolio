@@ -54,7 +54,7 @@ export default function Hero() {
             </div>
           </div>
           
-          <p className="hero-reveal text-muted-foreground mb-10 max-w-xl text-lg leading-relaxed md:text-xl">
+          <p className="hero-reveal text-muted-foreground mb-10 max-w-xl text-lg leading-relaxed md:text-xl text-justify">
             As a frontend-focused full-stack developer, I specialize in architecting high-performance, scalable platforms using React and Next.js. With deep expertise in developing custom Content Management Systems (CMS) and Learning Management Systems (LMS), I deliver tailored web solutions that drive business success.
           </p>
           

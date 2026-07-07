@@ -37,16 +37,16 @@ export default function About() {
       </div>
 
       <div className="about-reveal space-y-6 w-full">
-        <p className="text-muted-foreground leading-relaxed">
+        <p className="text-muted-foreground leading-relaxed text-justify">
           I am a passionate software engineer with a strong academic foundation, holding a Master of Computer Applications (MCA) from Chandigarh University and a Bachelor of Computer Applications (BCA) from Gauhati University. My core expertise lies in Full-Stack MERN Development, where I architect and build robust, high-performance applications from the ground up. For me, development isn't just about writing code; it's about turning complex business requirements into clean, scalable architectures and engaging digital experiences.
         </p>
-        <p className="text-muted-foreground leading-relaxed">
+        <p className="text-muted-foreground leading-relaxed text-justify">
           In addition to web development, I have over 3 years of experience in Android application development. This dual expertise allows me to create seamless, cross-platform ecosystems where web and mobile applications work perfectly in tandem. My approach to engineering is highly practical: I focus on writing maintainable code, optimizing performance, and implementing beautiful, intuitive UI/UX designs using modern tools and frameworks.
         </p>
-        <p className="text-muted-foreground leading-relaxed">
+        <p className="text-muted-foreground leading-relaxed text-justify">
           Beyond client work, I am the founder and lead developer of <a href="https://dailyaxom.in" target="_blank" rel="noopener noreferrer" className="text-foreground font-semibold hover:text-primary transition-colors underline underline-offset-4 decoration-primary/50 hover:decoration-primary">DailyAxom</a>, a comprehensive educational platform that I built entirely from scratch. Available as both a Web and Android app, DailyAxom serves as a vital resource for students. It provides accessible, high-quality study materials, including detailed board notes for CBSE, SEBA, and AHSEC, alongside dedicated preparation resources for competitive exams such as Assam Police, CTET, SSC, and Nursing.
         </p>
-        <p className="text-muted-foreground leading-relaxed">
+        <p className="text-muted-foreground leading-relaxed text-justify">
           Whether I am building a custom CMS tailored to a specific workflow, architecting a complex learning management system, or refining a mobile application's user interface, my goal is always the same: to deliver reliable, high-quality software that truly empowers its users and scales effortlessly as needs grow.
         </p>
 
