@@ -17,7 +17,7 @@ const ORANGE_HEX_LIGHT = "ea580c";
 
 export default function GithubContributions() {
   const container = useRef<HTMLDivElement>(null);
-  const { resolvedTheme } = useTheme();
+  const { theme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -42,7 +42,8 @@ export default function GithubContributions() {
     );
   }, { scope: container });
 
-  const isDark = mounted && resolvedTheme === 'dark';
+  const activeTheme = resolvedTheme || theme;
+  const isDark = !mounted || activeTheme === 'dark';
   const hexColor = isDark ? ORANGE_HEX_DARK : ORANGE_HEX_LIGHT;
 
   return (
@@ -114,12 +115,9 @@ export default function GithubContributions() {
                 className="w-full max-w-4xl h-auto rounded-md"
                 loading="lazy"
                 onError={(e) => {
-                  // Fallback to default snake svg if theme variant doesn't exist
                   const target = e.target as HTMLImageElement;
                   if (target.src.includes('-dark')) {
                     target.src = `https://raw.githubusercontent.com/${USERNAME}/${USERNAME}/output/github-contribution-grid-snake.svg`;
-                  } else {
-                    target.style.display = 'none';
                   }
                 }}
               />
