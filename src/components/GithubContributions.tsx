@@ -11,13 +11,9 @@ gsap.registerPlugin(ScrollTrigger);
 
 const USERNAME = "bloggerkhurshid";
 
-// Website primary orange theme colors
-const ORANGE_HEX_DARK = "f97316";
-const ORANGE_HEX_LIGHT = "ea580c";
-
 export default function GithubContributions() {
   const container = useRef<HTMLDivElement>(null);
-  const { theme, resolvedTheme } = useTheme();
+  const { resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -42,9 +38,7 @@ export default function GithubContributions() {
     );
   }, { scope: container });
 
-  const activeTheme = resolvedTheme || theme;
-  const isDark = !mounted || activeTheme === 'dark';
-  const hexColor = isDark ? ORANGE_HEX_DARK : ORANGE_HEX_LIGHT;
+  const isDark = mounted && resolvedTheme === 'dark';
 
   return (
     <section ref={container} id="github" className="py-16 px-6 max-w-7xl mx-auto w-full relative z-10">
@@ -87,39 +81,17 @@ export default function GithubContributions() {
             </div>
           </div>
 
-          {/* Contribution Heatmap Image matching active website dark/light mode */}
+          {/* Contribution Heatmap Image dynamically styled for Dark & Light theme */}
           <div className="overflow-x-auto pb-2 scrollbar-thin scrollbar-thumb-muted">
             <div className="min-w-[750px] flex justify-center py-2">
               <img
-                key={hexColor}
-                src={`https://ghchart.rshah.org/${hexColor}/${USERNAME}`}
+                key={isDark ? 'dark' : 'light'}
+                src={`https://ghchart.rshah.org/${isDark ? 'f97316' : 'ea580c'}/${USERNAME}`}
                 alt="Khurshid Alom's GitHub Contribution Chart"
-                className="w-full max-w-4xl h-auto rounded-lg filter drop-shadow-xs transition-opacity duration-300"
+                className={`w-full max-w-4xl h-auto rounded-lg filter transition-all duration-300 ${
+                  isDark ? 'invert brightness-[0.85] hue-rotate-180 contrast-125' : ''
+                }`}
                 loading="lazy"
-              />
-            </div>
-          </div>
-
-          {/* Contribution Snake SVG synced with active website theme */}
-          <div className="mt-6 pt-6 border-t border-border/40">
-            <div className="flex items-center justify-between mb-3">
-              <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">
-                Contribution Snake
-              </span>
-            </div>
-            <div className="overflow-x-auto flex justify-center bg-muted/20 p-4 rounded-xl border border-border/40">
-              <img
-                key={isDark ? 'snake-dark' : 'snake-light'}
-                src={`https://raw.githubusercontent.com/${USERNAME}/${USERNAME}/output/github-contribution-grid-snake${isDark ? '-dark' : ''}.svg`}
-                alt="GitHub Contribution Snake Animation"
-                className="w-full max-w-4xl h-auto rounded-md"
-                loading="lazy"
-                onError={(e) => {
-                  const target = e.target as HTMLImageElement;
-                  if (target.src.includes('-dark')) {
-                    target.src = `https://raw.githubusercontent.com/${USERNAME}/${USERNAME}/output/github-contribution-grid-snake.svg`;
-                  }
-                }}
               />
             </div>
           </div>
