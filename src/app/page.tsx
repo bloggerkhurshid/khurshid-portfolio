@@ -2,6 +2,7 @@ import Hero from '@/components/Hero';
 import About from '@/components/About';
 import Projects from '@/components/Projects';
 import BlogSection from '@/components/BlogSection';
+import GithubContributions from '@/components/GithubContributions';
 import Contact from '@/components/Contact';
 import Script from 'next/script';
 
@@ -53,6 +54,7 @@ export default async function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <Hero />
+      <GithubContributions />
       <About />
       <Projects initialProjects={projects} />
       <BlogSection initialBlogs={blogs.slice(0, 3)} />

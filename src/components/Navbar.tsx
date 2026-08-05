@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { ThemeToggle } from './ThemeToggle';
 
 const navItems = [
+  { name: 'GitHub', href: '/#github' },
   { name: 'About', href: '/#about' },
   { name: 'Projects', href: '/#projects' },
   { name: 'Blog', href: '/#home-blog' },
