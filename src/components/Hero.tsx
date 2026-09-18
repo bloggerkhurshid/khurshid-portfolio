@@ -3,9 +3,8 @@
 import React, { useRef } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
-import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowDown } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 export default function Hero() {
   const container = useRef<HTMLDivElement>(null);
@@ -25,90 +24,69 @@ export default function Hero() {
   }, { scope: container });
 
   return (
-    <section ref={container} id="home" className="flex min-h-svh items-center pt-20 pb-10 sm:pt-16 sm:pb-0 px-6 max-w-7xl mx-auto w-full relative z-10">
-      <div className="w-full grid items-center gap-12 lg:grid-cols-5">
-        
-        <div className="w-full lg:col-span-3">
-          
-          <h1 className="hero-reveal font-display text-foreground mt-8 lg:mt-0 mb-0 lg:mb-6 text-4xl leading-[1.15] font-bold md:text-5xl lg:text-6xl xl:text-7xl">
-            Khurshid <span className="text-primary">Alom</span>
-          </h1>
+    <section ref={container} id="home" className="relative flex min-h-svh items-center pt-24 pb-16 sm:pt-20 sm:pb-0 px-6 w-full max-w-7xl mx-auto z-10 overflow-hidden">
+      
+      {/* Background Image Overlay */}
+      <div className="hero-reveal absolute inset-0 z-0 pointer-events-none mix-blend-luminosity opacity-80 dark:opacity-80">
+        <div className="absolute inset-0 lg:-right-32">
+          <Image
+            src="/khurshid-hero.png"
+            alt="Khurshid Alom Background"
+            fill
+            priority
+            className="object-cover lg:object-contain object-right"
+          />
+        </div>
+        {/* Gradient masks for smooth fading into background */}
+        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/90 to-background/20 lg:to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/30" />
+      </div>
 
-          {/* Mobile Image (Visible only below lg breakpoint) */}
-          <div className="hero-reveal block lg:hidden w-full max-w-[280px] sm:max-w-sm mt-8 mb-10 mr-auto pt-6">
-            <div className="group relative w-full pt-6">
-              {/* The Orange Box (1:1 Aspect Ratio) */}
-              <div className="relative w-full aspect-square rounded-3xl border border-border bg-primary shadow-xl transition-all duration-500 group-hover:border-primary/40 group-hover:shadow-[0_0_0_1px_rgba(249,115,22,0.15),0_8px_24px_rgba(249,115,22,0.15)]">
-                {/* The Pop-out Image */}
-                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[115%] h-[120%] pointer-events-none">
-                  <Image
-                    src="/khurshid-hero.png"
-                    alt="Khurshid Alom"
-                    fill
-                    priority
-                    sizes="(max-width: 1024px) 100vw, 40vw"
-                    className="object-contain object-bottom drop-shadow-2xl transition-transform duration-500 ease-out origin-bottom group-hover:scale-105 pointer-events-auto"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
+      <div className="w-full max-w-7xl mx-auto relative z-10">
+        
+        {/* Text Content */}
+        <div className="w-full max-w-2xl flex flex-col justify-center">
           
-          <p className="hero-reveal text-muted-foreground mb-10 max-w-xl text-lg leading-relaxed md:text-xl text-justify">
-            As a frontend-focused full-stack developer, I specialize in architecting high-performance, scalable platforms using React and Next.js. With deep expertise in developing custom Content Management Systems (CMS) and Learning Management Systems (LMS), I deliver tailored web solutions that drive business success.
+          <div className="hero-reveal flex items-center gap-3 mb-6">
+            <span className="relative flex h-2.5 w-2.5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
+            </span>
+            <span className="text-sm font-medium text-muted-foreground uppercase tracking-wider backdrop-blur-sm px-2 py-1 rounded-md bg-background/50">Available for work</span>
+          </div>
+
+          <h1 className="hero-reveal font-display text-foreground mb-6 text-5xl leading-[1.1] font-bold md:text-6xl lg:text-7xl tracking-tight">
+            I'm Khurshid Alom. <br className="hidden sm:block" />
+            <span className="text-muted-foreground">A full-stack developer.</span>
+          </h1>
+          
+          <p className="hero-reveal text-muted-foreground mb-10 max-w-xl text-lg leading-relaxed md:text-xl font-normal drop-shadow-sm">
+            I build clean, scalable, and high-performance digital experiences. Specializing in React, Next.js, and custom web architectures.
           </p>
           
-          <div className="hero-reveal flex flex-wrap items-center gap-4 sm:gap-6">
-            <a href="#projects" className="bg-primary text-primary-foreground font-display inline-flex items-center gap-2 rounded-lg px-6 py-3 text-sm font-bold transition-opacity hover:opacity-90 shadow-lg shadow-primary/20">
-              View my work →
+          <div className="hero-reveal flex flex-wrap items-center gap-4">
+            <a href="#projects" className="group inline-flex items-center gap-2 rounded-full bg-foreground text-background px-8 py-4 text-sm font-medium transition-transform hover:-translate-y-0.5 shadow-lg">
+              View Projects
+              <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
             </a>
-            <a href="#contact" className="text-muted-foreground hover:text-foreground border-border/50 hover:border-border rounded-lg border px-5 py-3 text-sm font-medium transition-colors bg-background/50">
-              Get in touch
+            <a href="#contact" className="inline-flex items-center gap-2 rounded-full bg-background/80 backdrop-blur-md border border-border px-8 py-4 text-sm font-medium text-foreground hover:bg-muted transition-colors shadow-sm">
+              Contact Me
             </a>
           </div>
-          
-          <div className="hero-reveal mt-14 flex items-center gap-8 sm:gap-10">
+
+          <div className="hero-reveal mt-16 flex items-center gap-8 text-sm">
             <div>
-              <p className="font-display text-foreground text-2xl font-bold">3+</p>
-              <p className="text-muted-foreground mt-1 text-xs uppercase tracking-wider font-semibold">Years Exp.</p>
+              <p className="font-bold text-foreground text-2xl">3+</p>
+              <p className="text-muted-foreground mt-1 font-medium">Years Exp.</p>
             </div>
-            <div className="border-border/40 border-l pl-8 sm:pl-10">
-              <p className="font-display text-foreground text-2xl font-bold">15+</p>
-              <p className="text-muted-foreground mt-1 text-xs uppercase tracking-wider font-semibold">Projects</p>
-            </div>
-            <div className="border-border/40 border-l pl-8 sm:pl-10">
-              <p className="font-display text-foreground text-2xl font-bold">Web & Mobile</p>
-              <p className="text-muted-foreground mt-1 text-xs uppercase tracking-wider font-semibold">Development</p>
+            <div className="w-px h-12 bg-border"></div>
+            <div>
+              <p className="font-bold text-foreground text-2xl">15+</p>
+              <p className="text-muted-foreground mt-1 font-medium">Projects</p>
             </div>
           </div>
           
-          <div className="hero-reveal mt-16 sm:mt-24">
-            <a href="#about" className="text-muted-foreground hover:text-foreground transition-colors inline-block animate-bounce">
-              <ArrowDown size={20} />
-            </a>
-          </div>
         </div>
-
-        {/* Desktop Image (Visible only on lg and above) */}
-        <div className="hero-reveal hidden lg:block lg:col-span-2">
-          <div className="group relative w-full pt-12">
-            {/* The Orange Box (1:1 Aspect Ratio) */}
-            <div className="relative w-full aspect-square rounded-3xl border border-border bg-primary shadow-xl transition-all duration-500 group-hover:border-primary/40 group-hover:shadow-[0_0_0_1px_rgba(249,115,22,0.15),0_8px_24px_rgba(249,115,22,0.15)]">
-              {/* The Pop-out Image */}
-              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[120%] h-[125%] pointer-events-none z-10">
-                <Image
-                  src="/khurshid-hero.png"
-                  alt="Khurshid Alom"
-                  fill
-                  priority
-                  sizes="(max-width: 1024px) 100vw, 40vw"
-                  className="object-contain object-bottom drop-shadow-2xl transition-transform duration-500 ease-out origin-bottom group-hover:scale-[1.03] pointer-events-auto"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-
       </div>
     </section>
   );

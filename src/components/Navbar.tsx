@@ -10,7 +10,6 @@ const navItems = [
   { name: 'GitHub', href: '/#github' },
   { name: 'About', href: '/#about' },
   { name: 'Projects', href: '/#projects' },
-  { name: 'Blog', href: '/#home-blog' },
   { name: 'Contact', href: '/#contact' },
 ];
 

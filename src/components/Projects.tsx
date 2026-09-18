@@ -59,19 +59,20 @@ export default function Projects({ initialProjects = [] }: { initialProjects?: P
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {initialProjects.map((project) => (
             <div key={project.id} className="project-reveal group relative rounded-2xl border border-border/50 bg-card/50 hover:bg-card/80 overflow-hidden transition-all duration-500 flex flex-col hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/5 backdrop-blur-sm">
-              <Link href={`/projects/${project.slug}`} className="block relative w-full aspect-[21/9] overflow-hidden bg-muted/20">
-                <div className="absolute inset-0 bg-gradient-to-t from-card/80 group-hover:from-card/90 via-transparent to-transparent z-10 transition-colors duration-500" />
-                <img 
-                  src={project.image_path ? `https://kode.devkayy.in${project.image_path}` : '/project-three.jpg'} 
-                  alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-              </Link>
+
               
               <div className="p-5 pt-3 md:p-6 md:pt-4 flex-1 flex flex-col relative z-20">
                 <div className="mb-2 flex items-start justify-between">
-                  <Link href={`/projects/${project.slug}`} className="group/link flex items-center gap-2">
-                    <h3 className="font-display text-foreground text-lg md:text-xl font-bold transition-colors group-hover:text-primary line-clamp-1">
+                  <Link href={`/projects/${project.slug}`} className="group/link flex items-center gap-3">
+                    {project.image_path && (
+                      <img 
+                        src={project.image_path.startsWith('http') ? project.image_path : `https://kode.devkayy.in${project.image_path}`}
+                        alt={`${project.title} icon`}
+                        referrerPolicy="no-referrer"
+                        className="w-10 h-10 rounded-xl object-cover shadow-sm border border-border/50 shrink-0 group-hover:scale-105 transition-transform duration-300"
+                      />
+                    )}
+                    <h3 className="font-display text-foreground text-lg md:text-xl font-bold transition-colors group-hover:text-primary line-clamp-2">
                       {project.title}
                     </h3>
                   </Link>

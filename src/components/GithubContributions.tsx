@@ -86,7 +86,7 @@ export default function GithubContributions() {
             <div className="min-w-[750px] flex justify-center py-2">
               <img
                 key={isDark ? 'dark' : 'light'}
-                src={`https://ghchart.rshah.org/${isDark ? 'f97316' : 'ea580c'}/${USERNAME}`}
+                src={`https://ghchart.rshah.org/${isDark ? '635c50' : '4b5563'}/${USERNAME}`}
                 alt="Khurshid Alom's GitHub Contribution Chart"
                 className={`w-full max-w-4xl h-auto rounded-lg filter transition-all duration-300 ${
                   isDark ? 'invert brightness-[0.85] hue-rotate-180 contrast-125' : ''
