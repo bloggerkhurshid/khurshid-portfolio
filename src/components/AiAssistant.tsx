@@ -148,32 +148,27 @@ export default function AiAssistant() {
 
   return (
     <>
-      {/* Floating Launcher Button */}
-      <div className="fixed bottom-6 right-6 z-50 flex items-center gap-3">
-        {!isOpen && (
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.8 }}
-            onClick={() => setIsOpen(true)}
-            className="hidden sm:flex items-center gap-2 px-3.5 py-2 rounded-full bg-card/80 border border-primary/30 shadow-lg shadow-primary/10 backdrop-blur-xl cursor-pointer text-xs font-semibold text-foreground hover:border-primary transition-all group"
-          >
-            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-            <span>Ask Miko AI</span>
-            <Sparkles size={13} className="text-primary group-hover:rotate-12 transition-transform" />
-          </motion.div>
-        )}
-
+      {/* Floating Center Launcher Button Dock */}
+      <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 flex items-center justify-center pointer-events-auto">
         <motion.button
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
+          whileHover={{ scale: 1.04 }}
+          whileTap={{ scale: 0.96 }}
           onClick={() => setIsOpen(!isOpen)}
-          className="relative w-14 h-14 rounded-full bg-primary text-primary-foreground flex items-center justify-center shadow-xl shadow-primary/25 border border-primary-foreground/20 cursor-pointer overflow-hidden group focus:outline-hidden"
+          className="relative flex items-center gap-2.5 px-5 py-3 rounded-full bg-background/80 hover:bg-background/95 border border-primary/40 hover:border-primary backdrop-blur-xl shadow-xl shadow-primary/10 text-foreground transition-all duration-300 group cursor-pointer focus:outline-hidden"
           aria-label="Open Miko AI Assistant"
         >
-          <div className="absolute inset-0 bg-gradient-to-tr from-primary to-orange-400 opacity-90 group-hover:opacity-100 transition-opacity" />
-          <div className="relative z-10">
-            {isOpen ? <X size={24} /> : <Bot size={26} className="group-hover:scale-110 transition-transform" />}
+          {/* Subtle glowing ambient aura */}
+          <div className="absolute -inset-0.5 bg-gradient-to-r from-primary/30 to-indigo-500/30 rounded-full blur-sm opacity-60 group-hover:opacity-100 transition-opacity" />
+          
+          <div className="relative flex items-center gap-2.5">
+            <div className="w-7 h-7 rounded-full bg-primary/20 border border-primary/40 flex items-center justify-center text-primary">
+              {isOpen ? <X size={15} /> : <Bot size={16} className="group-hover:rotate-12 transition-transform duration-300" />}
+            </div>
+            <span className="text-xs font-semibold tracking-wide flex items-center gap-1.5">
+              <span>Ask Miko AI</span>
+              <Sparkles size={12} className="text-primary animate-pulse" />
+            </span>
+            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping ml-0.5" />
           </div>
         </motion.button>
       </div>
@@ -189,16 +184,16 @@ export default function AiAssistant() {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
               onClick={() => setIsOpen(false)}
-              className="fixed inset-0 z-40 bg-black/40 backdrop-blur-md transition-all cursor-pointer"
+              className="fixed inset-0 z-40 bg-black/45 backdrop-blur-md transition-all cursor-pointer"
             />
 
-            {/* Chat Window Modal */}
+            {/* Chat Window Modal - Centered */}
             <motion.div
-              initial={{ opacity: 0, y: 24, scale: 0.95 }}
+              initial={{ opacity: 0, y: 20, scale: 0.94 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: 24, scale: 0.95 }}
+              exit={{ opacity: 0, y: 20, scale: 0.94 }}
               transition={{ duration: 0.25, ease: 'easeOut' }}
-              className="fixed bottom-24 right-4 sm:right-6 z-50 w-[92vw] sm:w-[420px] h-[580px] max-h-[82vh] bg-background/60 border border-white/10 dark:border-white/15 backdrop-blur-2xl rounded-3xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.5)] flex flex-col overflow-hidden text-foreground"
+              className="fixed bottom-24 sm:bottom-auto sm:top-1/2 left-1/2 -translate-x-1/2 sm:-translate-y-1/2 z-50 w-[94vw] sm:w-[440px] h-[580px] max-h-[82vh] bg-background/70 border border-white/10 dark:border-white/15 backdrop-blur-2xl rounded-3xl shadow-[0_25px_70px_-15px_rgba(0,0,0,0.6)] flex flex-col overflow-hidden text-foreground"
             >
             {/* Header */}
             <div className="p-4 px-5 border-b border-border/50 bg-background/40 backdrop-blur-md flex items-center justify-between shrink-0">
