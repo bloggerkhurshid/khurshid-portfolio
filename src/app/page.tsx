@@ -8,7 +8,10 @@ import { staticProjects } from '@/data/projects';
 
 async function getProjects() {
   try {
-    const res = await fetch('https://kode.devkayy.in/api/projects.php', { next: { revalidate: 60 } });
+    const res = await fetch('https://kode.devkayy.in/api/projects.php', { 
+      next: { revalidate: 60 },
+      signal: AbortSignal.timeout(1500)
+    });
     if (!res.ok) return [];
     return res.json();
   } catch (e) {

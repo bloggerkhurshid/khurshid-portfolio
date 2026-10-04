@@ -27,31 +27,30 @@ export default function Projects({ initialProjects = [] }: { initialProjects?: P
     if (initialProjects.length === 0) return;
 
     gsap.fromTo(".project-header-reveal", 
-      { y: 30, opacity: 0 },
+      { y: 20, opacity: 0 },
       { 
         y: 0, 
         opacity: 1, 
-        duration: 0.8, 
+        duration: 0.4, 
         ease: "power2.out",
         scrollTrigger: {
           trigger: container.current,
-          start: "top 85%",
+          start: "top 90%",
         }
       }
     );
 
     gsap.fromTo(".project-card-reveal", 
-      { y: 40, opacity: 0, scale: 0.98 },
+      { y: 15, opacity: 0 },
       { 
         y: 0, 
         opacity: 1, 
-        scale: 1,
-        stagger: 0.08, 
-        duration: 0.75, 
+        stagger: 0.03, 
+        duration: 0.35, 
         ease: "power2.out",
         scrollTrigger: {
           trigger: ".project-grid-wrapper",
-          start: "top 85%",
+          start: "top 92%",
         }
       }
     );
