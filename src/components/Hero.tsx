@@ -27,7 +27,7 @@ export default function Hero() {
       }
     );
 
-    // Floating animation for interactive badges
+    // Floating animation for interactive avatar badges
     gsap.to(".floating-badge-1", {
       y: -8,
       duration: 3,
@@ -52,6 +52,33 @@ export default function Hero() {
       yoyo: true,
       ease: "sine.inOut",
       delay: 1
+    });
+
+    // Floating animation for metrics/stats cards
+    gsap.to(".floating-stat-1", {
+      y: -6,
+      duration: 3.2,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut"
+    });
+
+    gsap.to(".floating-stat-2", {
+      y: 6,
+      duration: 3.6,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut",
+      delay: 0.4
+    });
+
+    gsap.to(".floating-stat-3", {
+      y: -5,
+      duration: 4,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut",
+      delay: 0.8
     });
 
     // Subtle breathing pulse for the avatar
@@ -163,27 +190,24 @@ export default function Hero() {
             </a>
           </div>
 
-          {/* Key Metrics / Highlights Row */}
-          <div className="hero-reveal mt-14 pt-8 border-t border-border/60 grid grid-cols-3 gap-4 sm:gap-6 max-w-xl">
-            <div className="flex flex-col">
-              <div className="flex items-baseline gap-1">
-                <span className="font-display font-black text-foreground text-3xl sm:text-4xl tracking-tight">3+</span>
-              </div>
-              <p className="text-muted-foreground text-xs sm:text-sm font-medium mt-1">Years Experience</p>
+          {/* Key Metrics / Highlights Row as Floating Cards */}
+          <div className="hero-reveal mt-12 pt-6 grid grid-cols-1 sm:grid-cols-3 gap-3.5 sm:gap-4 max-w-xl">
+            {/* Card 1: 3+ Years Exp */}
+            <div className="floating-stat-1 relative flex flex-col p-4 rounded-2xl bg-card/80 border border-border/70 shadow-sm hover:shadow-md hover:border-primary/40 backdrop-blur-md transition-all duration-300">
+              <span className="font-display font-black text-foreground text-2xl sm:text-3xl tracking-tight">3+</span>
+              <p className="text-muted-foreground text-xs font-medium mt-1">Years Experience</p>
             </div>
             
-            <div className="flex flex-col border-l border-border/60 pl-4 sm:pl-6">
-              <div className="flex items-baseline gap-1">
-                <span className="font-display font-black text-foreground text-3xl sm:text-4xl tracking-tight">15+</span>
-              </div>
-              <p className="text-muted-foreground text-xs sm:text-sm font-medium mt-1">Production Projects</p>
+            {/* Card 2: 15+ Production Projects */}
+            <div className="floating-stat-2 relative flex flex-col p-4 rounded-2xl bg-card/80 border border-border/70 shadow-sm hover:shadow-md hover:border-primary/40 backdrop-blur-md transition-all duration-300">
+              <span className="font-display font-black text-foreground text-2xl sm:text-3xl tracking-tight">15+</span>
+              <p className="text-muted-foreground text-xs font-medium mt-1">Production Projects</p>
             </div>
             
-            <div className="flex flex-col border-l border-border/60 pl-4 sm:pl-6">
-              <div className="flex items-baseline gap-1">
-                <span className="font-display font-black text-foreground text-3xl sm:text-4xl tracking-tight">10K+</span>
-              </div>
-              <p className="text-muted-foreground text-xs sm:text-sm font-medium mt-1">Play Store Installs</p>
+            {/* Card 3: 10K+ Play Store Installs */}
+            <div className="floating-stat-3 relative flex flex-col p-4 rounded-2xl bg-card/80 border border-border/70 shadow-sm hover:shadow-md hover:border-primary/40 backdrop-blur-md transition-all duration-300">
+              <span className="font-display font-black text-foreground text-2xl sm:text-3xl tracking-tight">10K+</span>
+              <p className="text-muted-foreground text-xs font-medium mt-1">Play Store Installs</p>
             </div>
           </div>
           
