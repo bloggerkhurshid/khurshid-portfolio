@@ -4,9 +4,9 @@ import React, { useRef, useState, useEffect } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import Image from 'next/image';
-import { ArrowRight, Sparkles, Smartphone, Code2, Layers, CheckCircle2, Terminal } from 'lucide-react';
-import { FaAndroid, FaReact, FaNodeJs } from 'react-icons/fa';
-import { SiNextdotjs, SiTypescript, SiKotlin } from 'react-icons/si';
+import { ArrowRight, Sparkles, Smartphone, Code2, Layers, CheckCircle2 } from 'lucide-react';
+import { FaAndroid, FaReact, FaNodeJs, FaJava } from 'react-icons/fa';
+import { SiNextdotjs, SiTypescript } from 'react-icons/si';
 
 export default function Hero() {
   const container = useRef<HTMLDivElement>(null);
@@ -115,33 +115,33 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Main Title */}
-          <h1 className="hero-reveal font-display text-foreground mb-6 text-5xl leading-[1.08] font-extrabold sm:text-6xl lg:text-[4.2rem] tracking-tight">
-            I'm Khurshid Alom. <br />
-            <span className="bg-gradient-to-r from-foreground via-foreground/90 to-muted-foreground/80 bg-clip-text text-transparent">
-              Full-Stack & Android
-            </span>
-            <br />
-            <span className="text-primary font-bold">Developer.</span>
-          </h1>
+          {/* Main Title with Refined Hierarchy & High-End Typography */}
+          <div className="hero-reveal mb-6 space-y-2">
+            <h1 className="font-display font-extrabold text-foreground text-4xl sm:text-5xl lg:text-6xl tracking-tight leading-[1.1]">
+              Hi, I'm <span className="text-foreground">Khurshid Alom</span>
+            </h1>
+            <p className="font-display font-black text-3xl sm:text-4xl lg:text-5xl tracking-tight leading-[1.12] bg-gradient-to-r from-foreground via-foreground/80 to-primary bg-clip-text text-transparent">
+              Full-Stack & Android Developer
+            </p>
+          </div>
           
           {/* Subtitle */}
           <p className="hero-reveal text-muted-foreground mb-8 max-w-xl text-base sm:text-lg leading-relaxed font-normal">
-            Specializing in <span className="text-foreground font-medium">Native Android development (Kotlin)</span> and robust <span className="text-foreground font-medium">Full-Stack web architectures</span> (React, Next.js, Node.js). Building polished user experiences and scalable digital platforms from concept to deployment.
+            Specializing in <span className="text-foreground font-semibold">Native Android development (Java)</span> and modern <span className="text-foreground font-semibold">Full-Stack web architectures</span> (React, Next.js, Node.js). Building polished user experiences and scalable digital platforms from concept to deployment.
           </p>
 
           {/* Quick Skill Tags Pill Row */}
           <div className="hero-reveal flex flex-wrap items-center gap-2 mb-10">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-card/80 border border-border/70 text-xs font-medium text-foreground/80 backdrop-blur-sm shadow-xs">
-              <FaAndroid className="text-emerald-500 text-sm" /> Kotlin & Android SDK
+            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-card/80 border border-border/70 text-xs font-semibold text-foreground/90 backdrop-blur-sm shadow-xs">
+              <FaAndroid className="text-emerald-500 text-sm" /> Java & Android SDK
             </span>
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-card/80 border border-border/70 text-xs font-medium text-foreground/80 backdrop-blur-sm shadow-xs">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-card/80 border border-border/70 text-xs font-semibold text-foreground/90 backdrop-blur-sm shadow-xs">
               <SiNextdotjs className="text-foreground text-sm" /> Next.js & React
             </span>
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-card/80 border border-border/70 text-xs font-medium text-foreground/80 backdrop-blur-sm shadow-xs">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-card/80 border border-border/70 text-xs font-semibold text-foreground/90 backdrop-blur-sm shadow-xs">
               <SiTypescript className="text-blue-500 text-xs" /> TypeScript
             </span>
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-card/80 border border-border/70 text-xs font-medium text-foreground/80 backdrop-blur-sm shadow-xs">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-card/80 border border-border/70 text-xs font-semibold text-foreground/90 backdrop-blur-sm shadow-xs">
               <FaNodeJs className="text-green-600 text-sm" /> Node.js & APIs
             </span>
           </div>
@@ -178,14 +178,14 @@ export default function Hero() {
             {/* Ambient Radial Spotlight Behind Avatar */}
             <div className="absolute inset-0 -z-10 rounded-full bg-gradient-to-tr from-amber-500/15 via-primary/10 to-blue-500/15 blur-2xl transform scale-90 pointer-events-none" />
 
-            {/* Floating Micro-Badge 1: Android & Kotlin (Top Right) */}
+            {/* Floating Micro-Badge 1: Android & Java (Top Right) */}
             <div className="floating-badge-1 absolute -top-4 right-0 sm:-right-4 z-20 flex items-center gap-2.5 px-3.5 py-2 rounded-2xl bg-card/90 border border-border/80 shadow-xl backdrop-blur-md text-xs font-semibold text-foreground pointer-events-none">
               <div className="w-7 h-7 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-500">
                 <FaAndroid size={16} />
               </div>
               <div>
                 <p className="text-[11px] font-bold text-foreground leading-tight">Native Android</p>
-                <p className="text-[10px] text-muted-foreground font-mono">Kotlin • Jetpack</p>
+                <p className="text-[10px] text-muted-foreground font-mono">Java • Android SDK</p>
               </div>
             </div>
 
