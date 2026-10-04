@@ -73,6 +73,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import InteractiveBackground from '@/components/InteractiveBackground';
 import SmoothScrollProvider from '@/components/SmoothScrollProvider';
+import AiAssistant from '@/components/AiAssistant';
 
 import { ThemeProvider } from '@/components/ThemeProvider';
 
@@ -97,6 +98,7 @@ export default function RootLayout({
               {children}
               <Footer />
             </div>
+            <AiAssistant />
           </SmoothScrollProvider>
         </ThemeProvider>
       </body>

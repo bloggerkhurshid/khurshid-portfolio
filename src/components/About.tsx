@@ -53,82 +53,113 @@ export default function About() {
       </div>
 
       <div className="about-reveal space-y-6 w-full">
-        <p className="text-muted-foreground leading-relaxed text-justify">
-          I am a passionate software engineer with a strong academic foundation, holding a Master of Computer Applications (MCA) from Chandigarh University and a Bachelor of Computer Applications (BCA) from Gauhati University. My core expertise lies in Full-Stack MERN Development, where I architect and build robust, high-performance applications from the ground up. For me, development isn't just about writing code; it's about turning complex business requirements into clean, scalable architectures and engaging digital experiences.
+        <p className="text-muted-foreground text-base md:text-lg leading-relaxed">
+          I am a <strong className="text-foreground font-semibold">Full-Stack Engineer (MERN & Next.js)</strong> and <strong className="text-foreground font-semibold">Android Developer (3+ years)</strong> holding an <span className="text-foreground font-medium">MCA from Chandigarh University</span> and a <span className="text-foreground font-medium">BCA from Gauhati University</span>. I specialize in architecting fast, scalable web systems and modern mobile applications with refined UI/UX.
         </p>
-        <p className="text-muted-foreground leading-relaxed text-justify">
-          In addition to web development, I have over 3 years of experience in Android application development. This dual expertise allows me to create seamless, cross-platform ecosystems where web and mobile applications work perfectly in tandem. My approach to engineering is highly practical: I focus on writing maintainable code, optimizing performance, and implementing beautiful, intuitive UI/UX designs using modern tools and frameworks.
-        </p>
-        <p className="text-muted-foreground leading-relaxed text-justify">
-          Beyond client work, I am the founder and lead developer of <a href="https://dailyaxom.in" target="_blank" rel="noopener noreferrer" className="text-foreground font-semibold hover:text-primary transition-colors underline underline-offset-4 decoration-primary/50 hover:decoration-primary">DailyAxom</a>, a comprehensive educational platform that I built entirely from scratch. Available as both a Web and Android app, DailyAxom serves as a vital resource for students. It provides accessible, high-quality study materials, including detailed board notes for CBSE, SEBA, and AHSEC, alongside dedicated preparation resources for competitive exams such as Assam Police, CTET, SSC, and Nursing.
-        </p>
-        <p className="text-muted-foreground leading-relaxed text-justify">
-          Whether I am building a custom CMS tailored to a specific workflow, architecting a complex learning management system, or refining a mobile application's user interface, my goal is always the same: to deliver reliable, high-quality software that truly empowers its users and scales effortlessly as needs grow.
+        <p className="text-muted-foreground text-base md:text-lg leading-relaxed">
+          I am also the founder of <a href="https://dailyaxom.in" target="_blank" rel="noopener noreferrer" className="text-foreground font-semibold hover:text-primary transition-colors underline underline-offset-4 decoration-primary/50 hover:decoration-primary">DailyAxom</a>, an EdTech platform & mobile app serving thousands of students across Assam. Whether building custom enterprise platforms, LMS/CMS portals, or native Android apps, my focus is delivering <strong className="text-foreground font-semibold">clean architecture, high performance, and reliable software</strong> that scales.
         </p>
 
-        <div className="pt-8 mt-8 border-t border-border tech-grid-wrapper">
-          <h3 className="font-display text-foreground text-xl font-bold mb-8">Core Technologies</h3>
-          <div className="flex flex-col gap-8">
+        <div className="pt-10 mt-10 border-t border-border/60 tech-grid-wrapper">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
+            <div>
+              <p className="text-primary font-mono text-xs uppercase tracking-wider font-semibold mb-1">Stack & Capabilities</p>
+              <h3 className="font-display text-foreground text-2xl font-bold tracking-tight">Core Technologies</h3>
+            </div>
+            <p className="text-muted-foreground text-xs sm:text-sm max-w-sm">
+              Tools, languages, and frameworks I use regularly to build high-scale products.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {[
               {
-                category: "Frontend",
+                category: "Frontend Architecture",
+                tag: "Web & UI",
+                accent: "from-blue-500/15 via-indigo-500/5 to-transparent",
+                borderAccent: "group-hover:border-blue-500/40",
+                badgeColor: "text-blue-500 bg-blue-500/10 border-blue-500/20",
                 items: [
-                  { name: 'HTML5', icon: FaHtml5 },
-                  { name: 'CSS3', icon: FaCss3Alt },
-                  { name: 'React', icon: FaReact },
-                  { name: 'Next.js', icon: SiNextdotjs },
-                  { name: 'TypeScript', icon: SiTypescript },
-                  { name: 'Redux', icon: SiRedux },
-                  { name: 'Tailwind CSS', icon: SiTailwindcss },
-                  { name: 'Bootstrap', icon: FaBootstrap },
-                  { name: 'Framer Motion', icon: SiFramer },
-                  { name: 'GSAP', icon: SiGreensock },
+                  { name: 'React', icon: FaReact, color: 'text-cyan-400' },
+                  { name: 'Next.js', icon: SiNextdotjs, color: 'text-foreground' },
+                  { name: 'TypeScript', icon: SiTypescript, color: 'text-blue-500' },
+                  { name: 'Tailwind CSS', icon: SiTailwindcss, color: 'text-teal-400' },
+                  { name: 'Redux', icon: SiRedux, color: 'text-purple-400' },
+                  { name: 'Framer Motion', icon: SiFramer, color: 'text-pink-400' },
+                  { name: 'GSAP', icon: SiGreensock, color: 'text-emerald-400' },
+                  { name: 'HTML5 / CSS3', icon: FaHtml5, color: 'text-orange-500' },
+                  { name: 'Bootstrap', icon: FaBootstrap, color: 'text-indigo-400' },
                 ]
               },
               {
                 category: "Backend & Database",
+                tag: "APIs & Data",
+                accent: "from-emerald-500/15 via-teal-500/5 to-transparent",
+                borderAccent: "group-hover:border-emerald-500/40",
+                badgeColor: "text-emerald-500 bg-emerald-500/10 border-emerald-500/20",
                 items: [
-                  { name: 'Node.js', icon: FaNodeJs },
-                  { name: 'Express.js', icon: SiExpress },
-                  { name: 'GraphQL', icon: SiGraphql },
-                  { name: 'Prisma', icon: SiPrisma },
-                  { name: 'MongoDB', icon: SiMongodb },
-                  { name: 'PostgreSQL', icon: SiPostgresql },
-                  { name: 'MySQL', icon: SiMysql },
-                  { name: 'PHP', icon: FaPhp },
-                  { name: 'Firebase', icon: SiFirebase },
+                  { name: 'Node.js', icon: FaNodeJs, color: 'text-green-500' },
+                  { name: 'Express.js', icon: SiExpress, color: 'text-foreground' },
+                  { name: 'MongoDB', icon: SiMongodb, color: 'text-emerald-500' },
+                  { name: 'PostgreSQL', icon: SiPostgresql, color: 'text-sky-400' },
+                  { name: 'MySQL', icon: SiMysql, color: 'text-blue-400' },
+                  { name: 'Prisma', icon: SiPrisma, color: 'text-teal-400' },
+                  { name: 'GraphQL', icon: SiGraphql, color: 'text-pink-500' },
+                  { name: 'Firebase', icon: SiFirebase, color: 'text-amber-400' },
+                  { name: 'PHP', icon: FaPhp, color: 'text-indigo-400' },
                 ]
               },
               {
-                category: "Mobile app",
+                category: "Mobile App Development",
+                tag: "Native & Cross-Platform",
+                accent: "from-violet-500/15 via-purple-500/5 to-transparent",
+                borderAccent: "group-hover:border-violet-500/40",
+                badgeColor: "text-violet-500 bg-violet-500/10 border-violet-500/20",
                 items: [
-                  { name: 'React Native', icon: FaReact },
-                  { name: 'Java', icon: FaJava },
-                  { name: 'Android Studio', icon: SiAndroidstudio },
+                  { name: 'Java', icon: FaJava, color: 'text-red-500' },
+                  { name: 'Android Studio', icon: SiAndroidstudio, color: 'text-emerald-500' },
+                  { name: 'React Native', icon: FaReact, color: 'text-cyan-400' },
                 ]
               },
               {
-                category: "Tools & DevOps",
+                category: "Cloud, DevOps & Tools",
+                tag: "Infra & Design",
+                accent: "from-amber-500/15 via-orange-500/5 to-transparent",
+                borderAccent: "group-hover:border-amber-500/40",
+                badgeColor: "text-amber-500 bg-amber-500/10 border-amber-500/20",
                 items: [
-                  { name: 'Git', icon: FaGitAlt },
-                  { name: 'GitHub', icon: FaGithub },
-                  { name: 'Docker', icon: FaDocker },
-                  { name: 'AWS', icon: FaAws },
-                  { name: 'Vercel', icon: SiVercel },
-                  { name: 'Netlify', icon: SiNetlify },
-                  { name: 'Postman', icon: SiPostman },
-                  { name: 'Figma', icon: FaFigma },
+                  { name: 'Git & GitHub', icon: FaGithub, color: 'text-foreground' },
+                  { name: 'Docker', icon: FaDocker, color: 'text-sky-400' },
+                  { name: 'AWS', icon: FaAws, color: 'text-amber-500' },
+                  { name: 'Vercel', icon: SiVercel, color: 'text-foreground' },
+                  { name: 'Netlify', icon: SiNetlify, color: 'text-teal-400' },
+                  { name: 'Postman', icon: SiPostman, color: 'text-orange-500' },
+                  { name: 'Figma', icon: FaFigma, color: 'text-purple-400' },
                 ]
               }
-            ].map(techGroup => (
-              <div key={techGroup.category}>
-                <h4 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-4">{techGroup.category}</h4>
-                <div className="flex flex-wrap gap-3">
-                  {techGroup.items.map(tech => (
-                    <span key={tech.name} className="tech-pill flex items-center gap-2 px-5 py-2.5 bg-muted/20 text-xs font-medium tracking-wide text-muted-foreground rounded-full border border-border hover:border-primary/50 hover:text-foreground transition-colors cursor-default">
-                      <tech.icon className="text-sm" />
-                      {tech.name}
-                    </span>
+            ].map((techGroup) => (
+              <div 
+                key={techGroup.category} 
+                className={`group relative rounded-2xl border border-border/60 bg-gradient-to-b ${techGroup.accent} bg-card/40 p-6 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/5 ${techGroup.borderAccent}`}
+              >
+                <div className="flex items-center justify-between gap-3 mb-5 pb-4 border-b border-border/40">
+                  <h4 className="font-display font-semibold text-foreground text-base tracking-tight">
+                    {techGroup.category}
+                  </h4>
+                  <span className={`text-[11px] font-mono font-medium px-2.5 py-0.5 rounded-full border ${techGroup.badgeColor}`}>
+                    {techGroup.tag}
+                  </span>
+                </div>
+
+                <div className="flex flex-wrap gap-2">
+                  {techGroup.items.map((tech) => (
+                    <div 
+                      key={tech.name} 
+                      className="tech-pill group/tech flex items-center gap-2 px-3 py-1.5 rounded-xl bg-background/60 hover:bg-background border border-border/60 hover:border-primary/40 text-xs font-medium text-muted-foreground hover:text-foreground transition-all duration-200 cursor-default shadow-xs"
+                    >
+                      <tech.icon className={`text-sm shrink-0 transition-transform duration-200 group-hover/tech:scale-115 ${tech.color}`} />
+                      <span>{tech.name}</span>
+                    </div>
                   ))}
                 </div>
               </div>

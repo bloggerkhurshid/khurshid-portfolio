@@ -7,11 +7,51 @@ import Image from 'next/image';
 import { ArrowRight, Sparkles, Smartphone, Code2, Layers, CheckCircle2 } from 'lucide-react';
 import { FaAndroid, FaReact, FaNodeJs, FaJava } from 'react-icons/fa';
 import { SiNextdotjs, SiTypescript } from 'react-icons/si';
+import { motion, AnimatePresence } from 'framer-motion';
+
+const roles = [
+  "Full-Stack Development",
+  "Digital Marketing",
+  "Android App Development",
+  "Search Engine Optimization"
+];
 
 export default function Hero() {
   const container = useRef<HTMLDivElement>(null);
   const avatarWrapper = useRef<HTMLDivElement>(null);
   const [activeCodeTab, setActiveCodeTab] = useState<'stack' | 'status'>('stack');
+  const [roleIndex, setRoleIndex] = useState(0);
+  const [displayText, setDisplayText] = useState('');
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  useEffect(() => {
+    const currentRole = roles[roleIndex];
+    let timeout: NodeJS.Timeout;
+
+    if (!isDeleting && displayText === currentRole) {
+      // Pause at end of word before reversing
+      timeout = setTimeout(() => {
+        setIsDeleting(true);
+      }, 1800);
+    } else if (isDeleting && displayText === '') {
+      // Pause before typing next word
+      setIsDeleting(false);
+      setRoleIndex((prev) => (prev + 1) % roles.length);
+      timeout = setTimeout(() => {}, 300);
+    } else {
+      // Typing or deleting speed
+      const speed = isDeleting ? 40 : 80;
+      timeout = setTimeout(() => {
+        setDisplayText((prev) =>
+          isDeleting
+            ? currentRole.substring(0, prev.length - 1)
+            : currentRole.substring(0, prev.length + 1)
+        );
+      }, speed);
+    }
+
+    return () => clearTimeout(timeout);
+  }, [displayText, isDeleting, roleIndex]);
 
   useGSAP(() => {
     // Staggered reveal
@@ -100,29 +140,19 @@ export default function Hero() {
         {/* Left Column: Text & Content */}
         <div className="w-full lg:col-span-7 flex flex-col justify-center">
           
-          {/* Status Badge */}
-          <div className="hero-reveal flex items-center gap-2 mb-6">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-secondary/60 border border-border/80 backdrop-blur-md text-xs font-medium text-foreground/90 shadow-sm transition-all hover:border-primary/40">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-              </span>
-              <span>Available for New Projects</span>
-              <span className="text-muted-foreground">•</span>
-              <span className="text-muted-foreground flex items-center gap-1 font-mono text-[11px]">
-                <Sparkles size={11} className="text-amber-500" /> Full-Stack & Mobile
-              </span>
-            </div>
-          </div>
+
 
           {/* Main Title with Refined Hierarchy & High-End Typography */}
           <div className="hero-reveal mb-6 space-y-2">
             <h1 className="font-display font-extrabold text-foreground text-4xl sm:text-5xl lg:text-6xl tracking-tight leading-[1.1]">
               Hi, I'm <span className="text-foreground">Khurshid Alom</span>
             </h1>
-            <p className="font-display font-black text-3xl sm:text-4xl lg:text-5xl tracking-tight leading-[1.12] bg-gradient-to-r from-foreground via-foreground/80 to-primary bg-clip-text text-transparent">
-              Full-Stack & Android Developer
-            </p>
+            <div className="h-12 sm:h-14 lg:h-16 flex items-center">
+              <span className="font-display font-black text-2xl sm:text-4xl lg:text-5xl tracking-tight leading-tight bg-gradient-to-r from-primary via-indigo-400 to-primary/80 bg-clip-text text-transparent drop-shadow-sm select-none">
+                {displayText}
+              </span>
+              <span className="inline-block w-[3px] sm:w-[4px] h-7 sm:h-9 lg:h-11 bg-primary ml-1.5 rounded-full animate-pulse shadow-sm shadow-primary/60" />
+            </div>
           </div>
           
           {/* Subtitle */}

@@ -11,6 +11,16 @@ export interface Project {
 
 export const staticProjects: Project[] = [
   {
+    id: 109,
+    title: 'Khoraghat Premier League (KPL) — Season 3',
+    description: "Official digital tournament portal for Assam's premier hard tennis ball cricket championship featuring franchise teams, registered player rosters, sponsor showcases, and live match updates.",
+    tech_stacks: 'Web Application, Next.js, Responsive Design, Sports Portal, UI/UX',
+    live_url: 'http://kpl26.online/',
+    github_url: '',
+    slug: 'kpl26',
+    image_path: 'https://kpl26.online/kpl-logo.jpg'
+  },
+  {
     id: 108,
     title: 'ProjuktiSoft - Software Development Studio',
     description: 'Independent software development studio specializing in modern full-stack web applications, MERN stack engineering, EdTech platforms (DailyAxom), custom digital products, and client business tooling.',
@@ -29,16 +39,6 @@ export const staticProjects: Project[] = [
     github_url: '',
     slug: 'nexxskill',
     image_path: 'https://nexxskill.com/assets/logo.png'
-  },
-  {
-    id: 107,
-    title: 'DailyAxom - Educational Platform & Prep',
-    description: 'Comprehensive educational portal serving Assam government job updates, competitive exam preparation (ADRE & APSC), study notes, mock tests, push notification broadcasts, and a custom administrative management panel.',
-    tech_stacks: 'Full Stack, Push Notifications, Admin Panel, Next.js, API Integration',
-    live_url: 'https://www.dailyaxom.in/',
-    github_url: '',
-    slug: 'dailyaxom-portal',
-    image_path: 'https://www.dailyaxom.in/apple-touch-icon.png'
   },
   {
     id: 101,
