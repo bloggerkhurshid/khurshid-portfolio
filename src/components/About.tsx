@@ -14,16 +14,32 @@ export default function About() {
 
   useGSAP(() => {
     gsap.fromTo(".about-reveal",
-      { y: 30, opacity: 0 },
+      { y: 36, opacity: 0 },
       {
         y: 0,
         opacity: 1,
-        stagger: 0.1,
-        duration: 0.8,
+        stagger: 0.12,
+        duration: 0.85,
         ease: "power2.out",
         scrollTrigger: {
           trigger: container.current,
           start: "top 80%",
+        }
+      }
+    );
+
+    gsap.fromTo(".tech-pill",
+      { scale: 0.9, opacity: 0, y: 15 },
+      {
+        scale: 1,
+        opacity: 1,
+        y: 0,
+        stagger: 0.02,
+        duration: 0.5,
+        ease: "back.out(1.4)",
+        scrollTrigger: {
+          trigger: ".tech-grid-wrapper",
+          start: "top 85%",
         }
       }
     );
@@ -50,7 +66,7 @@ export default function About() {
           Whether I am building a custom CMS tailored to a specific workflow, architecting a complex learning management system, or refining a mobile application's user interface, my goal is always the same: to deliver reliable, high-quality software that truly empowers its users and scales effortlessly as needs grow.
         </p>
 
-        <div className="pt-8 mt-8 border-t border-border">
+        <div className="pt-8 mt-8 border-t border-border tech-grid-wrapper">
           <h3 className="font-display text-foreground text-xl font-bold mb-8">Core Technologies</h3>
           <div className="flex flex-col gap-8">
             {[
@@ -109,7 +125,7 @@ export default function About() {
                 <h4 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-4">{techGroup.category}</h4>
                 <div className="flex flex-wrap gap-3">
                   {techGroup.items.map(tech => (
-                    <span key={tech.name} className="flex items-center gap-2 px-5 py-2.5 bg-muted/20 text-xs font-medium tracking-wide text-muted-foreground rounded-full border border-border hover:border-primary/50 hover:text-foreground transition-colors cursor-default">
+                    <span key={tech.name} className="tech-pill flex items-center gap-2 px-5 py-2.5 bg-muted/20 text-xs font-medium tracking-wide text-muted-foreground rounded-full border border-border hover:border-primary/50 hover:text-foreground transition-colors cursor-default">
                       <tech.icon className="text-sm" />
                       {tech.name}
                     </span>

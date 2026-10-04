@@ -72,6 +72,7 @@ export const metadata: Metadata = {
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import InteractiveBackground from '@/components/InteractiveBackground';
+import SmoothScrollProvider from '@/components/SmoothScrollProvider';
 
 import { ThemeProvider } from '@/components/ThemeProvider';
 
@@ -88,13 +89,15 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col relative bg-background text-foreground noise-overlay">
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
-          <InteractiveBackground />
-          
-          <div className="relative z-10 flex flex-col min-h-screen">
-            <Navbar />
-            {children}
-            <Footer />
-          </div>
+          <SmoothScrollProvider>
+            <InteractiveBackground />
+            
+            <div className="relative z-10 flex flex-col min-h-screen">
+              <Navbar />
+              {children}
+              <Footer />
+            </div>
+          </SmoothScrollProvider>
         </ThemeProvider>
       </body>
     </html>

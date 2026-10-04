@@ -26,17 +26,32 @@ export default function Projects({ initialProjects = [] }: { initialProjects?: P
   useGSAP(() => {
     if (initialProjects.length === 0) return;
 
-    gsap.fromTo(".project-reveal", 
+    gsap.fromTo(".project-header-reveal", 
       { y: 30, opacity: 0 },
       { 
         y: 0, 
         opacity: 1, 
-        stagger: 0.1, 
         duration: 0.8, 
         ease: "power2.out",
         scrollTrigger: {
           trigger: container.current,
-          start: "top 80%",
+          start: "top 85%",
+        }
+      }
+    );
+
+    gsap.fromTo(".project-card-reveal", 
+      { y: 40, opacity: 0, scale: 0.98 },
+      { 
+        y: 0, 
+        opacity: 1, 
+        scale: 1,
+        stagger: 0.08, 
+        duration: 0.75, 
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: ".project-grid-wrapper",
+          start: "top 85%",
         }
       }
     );
@@ -45,7 +60,7 @@ export default function Projects({ initialProjects = [] }: { initialProjects?: P
   return (
     <section ref={container} id="projects" className="py-24 px-6 max-w-7xl mx-auto w-full relative z-10">
       
-      <div className="project-reveal mb-12">
+      <div className="project-header-reveal mb-12">
         <p className="text-primary font-display mb-3 text-sm font-medium tracking-wide uppercase">Work</p>
         <h2 className="font-display text-foreground mb-4 text-3xl font-bold md:text-4xl">Things I've built</h2>
         <p className="text-muted-foreground mb-12 max-w-xl">
@@ -56,9 +71,9 @@ export default function Projects({ initialProjects = [] }: { initialProjects?: P
       {initialProjects.length === 0 ? (
         <div className="text-muted-foreground text-sm">No projects available.</div>
       ) : (
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="project-grid-wrapper grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {initialProjects.map((project) => (
-            <div key={project.id} className="project-reveal group relative rounded-2xl border border-border/50 bg-card/50 hover:bg-card/80 overflow-hidden transition-all duration-500 flex flex-col hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/5 backdrop-blur-sm">
+            <div key={project.id} className="project-card-reveal group relative rounded-2xl border border-border/50 bg-card/50 hover:bg-card/80 overflow-hidden transition-all duration-500 flex flex-col hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/5 backdrop-blur-sm">
 
               
               <div className="p-5 pt-3 md:p-6 md:pt-4 flex-1 flex flex-col relative z-20">
