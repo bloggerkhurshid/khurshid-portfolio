@@ -5,28 +5,22 @@ import BackButton from '@/components/BackButton';
 import { GithubIcon as Github } from '@/components/Icons';
 import { Metadata, ResolvingMetadata } from 'next';
 
-interface Project {
-  id: number;
-  title: string;
-  description: string;
-  tech_stacks: string;
-  live_url: string;
-  github_url: string;
-  slug: string;
-  image_path: string;
-}
+import { staticProjects, Project } from '@/data/projects';
 
 type Props = {
   params: Promise<{ slug: string }>
 }
 
 async function getProject(slug: string): Promise<Project | null> {
+  const localProject = staticProjects.find(p => p.slug === slug);
+  if (localProject) return localProject;
+
   try {
     const res = await fetch('https://kode.devkayy.in/api/projects.php', { next: { revalidate: 60 } });
     if (!res.ok) return null;
     const data = await res.json();
     if (Array.isArray(data)) {
-      return data.find(p => p.slug === slug) || null;
+      return data.find((p: Project) => p.slug === slug) || null;
     }
     return null;
   } catch (error) {
@@ -48,7 +42,9 @@ export async function generateMetadata(
     };
   }
 
-  const imageUrl = project.image_path ? `https://kode.devkayy.in${project.image_path}` : '/project-three.jpg';
+  const imageUrl = project.image_path
+    ? (project.image_path.startsWith('http') ? project.image_path : `https://kode.devkayy.in${project.image_path}`)
+    : '/project-three.jpg';
 
   return {
     title: `${project.title} | Khurshid Alom Portfolio`,
@@ -93,6 +89,10 @@ export default async function ProjectDetails({ params }: Props) {
     );
   }
 
+  const projectImageUrl = project.image_path
+    ? (project.image_path.startsWith('http') ? project.image_path : `https://kode.devkayy.in${project.image_path}`)
+    : '/project-three.jpg';
+
   return (
     <main className="min-h-screen pt-32 pb-20 px-6 bg-background relative z-10">
       <article className="mx-auto max-w-7xl">
@@ -109,11 +109,14 @@ export default async function ProjectDetails({ params }: Props) {
             ))}
           </div>
 
-          <div className="w-full aspect-video relative mb-16 rounded-2xl overflow-hidden bg-muted/20 border border-border">
+          <div className={`w-full aspect-video relative mb-16 rounded-2xl overflow-hidden border border-border flex items-center justify-center p-8 ${
+            project.slug === 'projuktisoft' ? 'bg-white' : 'bg-muted/20'
+          }`}>
             <img 
-              src={project.image_path ? `https://kode.devkayy.in${project.image_path}` : '/project-three.jpg'} 
+              src={projectImageUrl} 
               alt={project.title}
-              className="w-full h-full object-cover"
+              referrerPolicy="no-referrer"
+              className={project.slug === 'projuktisoft' ? 'max-h-full max-w-full object-contain' : 'w-full h-full object-cover'}
             />
           </div>
 

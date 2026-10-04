@@ -69,7 +69,11 @@ export default function Projects({ initialProjects = [] }: { initialProjects?: P
                         src={project.image_path.startsWith('http') ? project.image_path : `https://kode.devkayy.in${project.image_path}`}
                         alt={`${project.title} icon`}
                         referrerPolicy="no-referrer"
-                        className="w-10 h-10 rounded-xl object-cover shadow-sm border border-border/50 shrink-0 group-hover:scale-105 transition-transform duration-300"
+                        className={`w-10 h-10 rounded-xl shadow-sm border border-border/50 shrink-0 group-hover:scale-105 transition-transform duration-300 ${
+                          project.slug === 'projuktisoft' || project.image_path.includes('projuktisoft.com')
+                            ? 'bg-white p-1 object-contain'
+                            : 'object-cover'
+                        }`}
                       />
                     )}
                     <h3 className="font-display text-foreground text-lg md:text-xl font-bold transition-colors group-hover:text-primary line-clamp-2">
