@@ -54,33 +54,6 @@ export default function Hero() {
       delay: 1
     });
 
-    // Floating animation for metrics/stats cards
-    gsap.to(".floating-stat-1", {
-      y: -6,
-      duration: 3.2,
-      repeat: -1,
-      yoyo: true,
-      ease: "sine.inOut"
-    });
-
-    gsap.to(".floating-stat-2", {
-      y: 6,
-      duration: 3.6,
-      repeat: -1,
-      yoyo: true,
-      ease: "sine.inOut",
-      delay: 0.4
-    });
-
-    gsap.to(".floating-stat-3", {
-      y: -5,
-      duration: 4,
-      repeat: -1,
-      yoyo: true,
-      ease: "sine.inOut",
-      delay: 0.8
-    });
-
     // Subtle breathing pulse for the avatar
     gsap.to(avatarWrapper.current, {
       y: -6,
@@ -188,27 +161,6 @@ export default function Hero() {
             >
               Get in Touch
             </a>
-          </div>
-
-          {/* Key Metrics / Highlights Row as Floating Cards */}
-          <div className="hero-reveal mt-12 pt-6 grid grid-cols-1 sm:grid-cols-3 gap-3.5 sm:gap-4 max-w-xl">
-            {/* Card 1: 3+ Years Exp */}
-            <div className="floating-stat-1 relative flex flex-col p-4 rounded-2xl bg-card/80 border border-border/70 shadow-sm hover:shadow-md hover:border-primary/40 backdrop-blur-md transition-all duration-300">
-              <span className="font-display font-black text-foreground text-2xl sm:text-3xl tracking-tight">3+</span>
-              <p className="text-muted-foreground text-xs font-medium mt-1">Years Experience</p>
-            </div>
-            
-            {/* Card 2: 15+ Production Projects */}
-            <div className="floating-stat-2 relative flex flex-col p-4 rounded-2xl bg-card/80 border border-border/70 shadow-sm hover:shadow-md hover:border-primary/40 backdrop-blur-md transition-all duration-300">
-              <span className="font-display font-black text-foreground text-2xl sm:text-3xl tracking-tight">15+</span>
-              <p className="text-muted-foreground text-xs font-medium mt-1">Production Projects</p>
-            </div>
-            
-            {/* Card 3: 10K+ Play Store Installs */}
-            <div className="floating-stat-3 relative flex flex-col p-4 rounded-2xl bg-card/80 border border-border/70 shadow-sm hover:shadow-md hover:border-primary/40 backdrop-blur-md transition-all duration-300">
-              <span className="font-display font-black text-foreground text-2xl sm:text-3xl tracking-tight">10K+</span>
-              <p className="text-muted-foreground text-xs font-medium mt-1">Play Store Installs</p>
-            </div>
           </div>
           
         </div>
