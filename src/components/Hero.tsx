@@ -10,10 +10,10 @@ import { SiNextdotjs, SiTypescript } from 'react-icons/si';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const roles = [
-  "Full-Stack Development",
-  "Digital Marketing",
-  "Android App Development",
-  "Search Engine Optimization"
+  "Full-Stack Software Engineer",
+  "Native Android Engineer",
+  "Cloud & Web Architect",
+  "Technical SEO & Growth Engineer"
 ];
 
 export default function Hero() {
