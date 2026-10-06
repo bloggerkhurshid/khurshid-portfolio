@@ -5,6 +5,7 @@ import { Menu, X } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { ThemeToggle } from './ThemeToggle';
+import { useTheme } from 'next-themes';
 
 const navItems = [
   { name: 'GitHub', href: '/#github' },
@@ -16,15 +17,20 @@ const navItems = [
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  const { resolvedTheme } = useTheme();
   const pathname = usePathname();
 
   useEffect(() => {
+    setMounted(true);
     const handleScroll = () => {
       setScrolled(window.scrollY > 10);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const isDark = mounted ? resolvedTheme === 'dark' : true;
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     if (href.startsWith('/#') && pathname === '/') {
@@ -56,7 +62,8 @@ export default function Navbar() {
             <img 
               src="/signature.png" 
               alt="Khurshid Alom" 
-              className="h-10 sm:h-12 w-auto object-contain brightness-0 dark:invert transition-transform hover:scale-105 duration-300"
+              style={{ filter: isDark ? 'invert(1) brightness(1)' : 'brightness(0)' }}
+              className="h-10 sm:h-12 w-auto object-contain transition-transform hover:scale-105 duration-300"
             />
           </Link>
 
