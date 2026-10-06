@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from 'react';
+import { createPortal } from 'react-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
@@ -24,6 +25,11 @@ interface Project {
 export default function Projects({ initialProjects = [] }: { initialProjects?: Project[] }) {
   const container = useRef<HTMLDivElement>(null);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Close modal on ESC key
   useEffect(() => {
@@ -152,129 +158,132 @@ export default function Projects({ initialProjects = [] }: { initialProjects?: P
         </div>
       )}
 
-      {/* Project Details Modal Dialog */}
-      <AnimatePresence>
-        {selectedProject && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6">
-            {/* Backdrop with Frosted Blur */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.2 }}
-              onClick={() => setSelectedProject(null)}
-              className="fixed inset-0 bg-black/60 backdrop-blur-md cursor-pointer"
-            />
+      {/* Project Details Modal Dialog via Portal */}
+      {mounted && createPortal(
+        <AnimatePresence>
+          {selectedProject && (
+            <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 sm:p-6">
+              {/* Darkened Backdrop with Frosted Blur */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.2 }}
+                onClick={() => setSelectedProject(null)}
+                className="fixed inset-0 bg-black/75 backdrop-blur-md cursor-pointer"
+              />
 
-            {/* Modal Box */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: 15 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 15 }}
-              transition={{ duration: 0.25, ease: "easeOut" }}
-              className="relative w-full max-w-2xl bg-card border border-border/80 backdrop-blur-2xl rounded-3xl shadow-2xl overflow-hidden z-10 flex flex-col max-h-[88vh]"
-            >
-              {/* Header */}
-              <div className="p-5 sm:p-6 border-b border-border/50 flex items-start justify-between gap-4 bg-muted/20">
-                <div className="flex items-center gap-3.5">
-                  {selectedProject.image_path && (
-                    <img
-                      src={selectedProject.image_path.startsWith('http') ? selectedProject.image_path : `https://kode.devkayy.in${selectedProject.image_path}`}
-                      alt={selectedProject.title}
-                      referrerPolicy="no-referrer"
-                      className={`w-12 h-12 rounded-2xl shadow-sm border border-border/60 shrink-0 ${
-                        selectedProject.slug === 'projuktisoft' || selectedProject.image_path.includes('projuktisoft.com')
-                          ? 'bg-white p-2 object-contain'
-                          : 'object-cover'
-                      }`}
-                    />
-                  )}
-                  <div>
-                    <h3 className="font-display font-bold text-lg sm:text-2xl text-foreground leading-tight">
-                      {selectedProject.title}
-                    </h3>
-                    {!selectedProject.github_url && (
-                      <span className="inline-flex items-center gap-1 text-[10px] uppercase font-semibold text-muted-foreground mt-1">
-                        <Lock size={10} /> Confidential Client Solution
-                      </span>
+              {/* Modal Box with Solid Opaque Background */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95, y: 15 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.95, y: 15 }}
+                transition={{ duration: 0.25, ease: "easeOut" }}
+                className="relative w-full max-w-2xl bg-[#121214] dark:bg-[#121214] light:bg-white border border-border rounded-3xl shadow-[0_25px_70px_rgba(0,0,0,0.8)] overflow-hidden z-10 flex flex-col max-h-[88vh]"
+              >
+                {/* Header */}
+                <div className="p-5 sm:p-6 border-b border-border/70 flex items-start justify-between gap-4 bg-[#18181b]/90">
+                  <div className="flex items-center gap-3.5">
+                    {selectedProject.image_path && (
+                      <img
+                        src={selectedProject.image_path.startsWith('http') ? selectedProject.image_path : `https://kode.devkayy.in${selectedProject.image_path}`}
+                        alt={selectedProject.title}
+                        referrerPolicy="no-referrer"
+                        className={`w-12 h-12 rounded-2xl shadow-sm border border-border/60 shrink-0 ${
+                          selectedProject.slug === 'projuktisoft' || selectedProject.image_path.includes('projuktisoft.com')
+                            ? 'bg-white p-2 object-contain'
+                            : 'object-cover'
+                        }`}
+                      />
                     )}
+                    <div>
+                      <h3 className="font-display font-bold text-lg sm:text-2xl text-foreground leading-tight">
+                        {selectedProject.title}
+                      </h3>
+                      {!selectedProject.github_url && (
+                        <span className="inline-flex items-center gap-1 text-[10px] uppercase font-semibold text-muted-foreground mt-1">
+                          <Lock size={10} /> Confidential Client Solution
+                        </span>
+                      )}
+                    </div>
+                  </div>
+
+                  <button
+                    onClick={() => setSelectedProject(null)}
+                    className="p-2 rounded-xl text-muted-foreground hover:text-foreground hover:bg-muted transition-colors cursor-pointer shrink-0"
+                    aria-label="Close dialog"
+                  >
+                    <X size={20} />
+                  </button>
+                </div>
+
+                {/* Scrollable Content Body */}
+                <div className="p-5 sm:p-6 overflow-y-auto space-y-6 bg-[#121214]">
+                  {/* Description */}
+                  <div>
+                    <h4 className="font-display font-semibold text-xs uppercase text-muted-foreground tracking-wider mb-2">
+                      About Project
+                    </h4>
+                    <p className="text-foreground/90 text-sm sm:text-base leading-relaxed">
+                      {selectedProject.description}
+                    </p>
+                  </div>
+
+                  {/* Tech Stacks */}
+                  <div>
+                    <h4 className="font-display font-semibold text-xs uppercase text-muted-foreground tracking-wider mb-2.5 flex items-center gap-1.5">
+                      <Layers size={14} className="text-primary" /> Technologies & Architecture
+                    </h4>
+                    <div className="flex flex-wrap gap-2">
+                      {selectedProject.tech_stacks.split(',').map((tech) => (
+                        <span
+                          key={tech}
+                          className="px-3 py-1.5 rounded-xl text-xs font-medium bg-[#1e1e24] border border-border text-foreground/90"
+                        >
+                          {tech.trim()}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </div>
 
-                <button
-                  onClick={() => setSelectedProject(null)}
-                  className="p-2 rounded-xl text-muted-foreground hover:text-foreground hover:bg-muted transition-colors cursor-pointer shrink-0"
-                  aria-label="Close dialog"
-                >
-                  <X size={20} />
-                </button>
-              </div>
-
-              {/* Scrollable Content Body */}
-              <div className="p-5 sm:p-6 overflow-y-auto space-y-6">
-                {/* Description */}
-                <div>
-                  <h4 className="font-display font-semibold text-sm uppercase text-muted-foreground tracking-wider mb-2">
-                    About Project
-                  </h4>
-                  <p className="text-foreground/90 text-sm sm:text-base leading-relaxed">
-                    {selectedProject.description}
-                  </p>
-                </div>
-
-                {/* Tech Stacks */}
-                <div>
-                  <h4 className="font-display font-semibold text-sm uppercase text-muted-foreground tracking-wider mb-2.5 flex items-center gap-1.5">
-                    <Layers size={14} className="text-primary" /> Technologies & Architecture
-                  </h4>
-                  <div className="flex flex-wrap gap-2">
-                    {selectedProject.tech_stacks.split(',').map((tech) => (
-                      <span
-                        key={tech}
-                        className="px-3 py-1 rounded-xl text-xs font-medium bg-muted/60 border border-border/70 text-foreground"
-                      >
-                        {tech.trim()}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              {/* Footer Actions */}
-              <div className="p-5 sm:p-6 border-t border-border/50 bg-muted/20 flex flex-wrap items-center justify-end gap-3">
-                <button
-                  onClick={() => setSelectedProject(null)}
-                  className="px-5 py-2.5 rounded-xl border border-border hover:bg-muted text-sm font-medium transition-colors cursor-pointer"
-                >
-                  Close
-                </button>
-
-                {selectedProject.github_url && (
-                  <a
-                    href={selectedProject.github_url}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-border bg-card hover:bg-muted text-foreground text-sm font-semibold transition-colors"
+                {/* Footer Actions */}
+                <div className="p-5 sm:p-6 border-t border-border/70 bg-[#18181b]/90 flex flex-wrap items-center justify-end gap-3">
+                  <button
+                    onClick={() => setSelectedProject(null)}
+                    className="px-5 py-2.5 rounded-xl border border-border hover:bg-muted text-sm font-medium transition-colors cursor-pointer"
                   >
-                    <FaGithub size={16} /> Source Code
-                  </a>
-                )}
+                    Close
+                  </button>
 
-                {selectedProject.live_url && (
-                  <a
-                    href={selectedProject.live_url}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-primary text-primary-foreground hover:bg-primary/90 text-sm font-semibold shadow-md shadow-primary/20 transition-all hover:scale-[1.02] active:scale-[0.98]"
-                  >
-                    Visit Live Project <ExternalLink size={15} />
-                  </a>
-                )}
-              </div>
-            </motion.div>
-          </div>
-        )}
-      </AnimatePresence>
+                  {selectedProject.github_url && (
+                    <a
+                      href={selectedProject.github_url}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-border bg-card hover:bg-muted text-foreground text-sm font-semibold transition-colors"
+                    >
+                      <FaGithub size={16} /> Source Code
+                    </a>
+                  )}
+
+                  {selectedProject.live_url && (
+                    <a
+                      href={selectedProject.live_url}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-primary text-primary-foreground hover:bg-primary/90 text-sm font-semibold shadow-md shadow-primary/20 transition-all hover:scale-[1.02] active:scale-[0.98]"
+                    >
+                      Visit Live Project <ExternalLink size={15} />
+                    </a>
+                  )}
+                </div>
+              </motion.div>
+            </div>
+          )}
+        </AnimatePresence>,
+        document.body
+      )}
 
     </section>
   );
