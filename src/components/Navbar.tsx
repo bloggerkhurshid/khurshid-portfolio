@@ -44,27 +44,17 @@ export default function Navbar() {
     if (isOpen) setIsOpen(false);
   };
 
-  if (pathname?.startsWith('/admin')) {
-    return null;
-  }
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
-      {/* Glass Background for Top Header */}
-      <div 
-        className={`absolute inset-0 transition-all duration-300 border-b ${
-          scrolled
-            ? 'bg-background/70 dark:bg-background/50 backdrop-blur-xl border-border/80 shadow-[0_4px_30px_rgba(0,0,0,0.06)] dark:shadow-[0_4px_30px_rgba(0,0,0,0.3)]'
-            : 'bg-background/40 dark:bg-background/20 backdrop-blur-lg border-border/40'
-        }`}
-        style={{
-          WebkitBackdropFilter: 'blur(16px) saturate(180%)',
-          backdropFilter: 'blur(16px) saturate(180%)'
-        }}
-      />
-
-      <div className="relative mx-auto w-full max-w-7xl px-6 sm:px-8">
-        <nav className="flex h-16 sm:h-20 items-center justify-between w-full">
+    <header className="fixed top-0 left-0 right-0 z-50 pointer-events-none">
+      <div className={`relative mx-auto w-full max-w-7xl transition-transform duration-500 ease-out pointer-events-auto ${scrolled ? 'translate-y-4' : 'translate-y-0'}`}>
+        
+        {/* Floating Background */}
+        <div 
+          className={`absolute inset-0 mx-4 xl:mx-0 h-16 bg-background/80 border border-border backdrop-blur-md rounded-2xl shadow-lg transition-opacity duration-500 ease-out ${scrolled ? 'opacity-100' : 'opacity-0'}`}
+        />
+        
+        <nav className="relative flex h-16 items-center justify-between w-full px-8 xl:px-6">
           <Link href="/" className="inline-flex items-center transition-opacity hover:opacity-85 py-0.5" aria-label="Khurshid Alom Home">
             <img 
               src="/signature.png" 
@@ -105,22 +95,16 @@ export default function Navbar() {
 
       {/* Mobile Nav Menu */}
       {isOpen && (
-        <div 
-          className={`md:hidden absolute left-4 right-4 bg-background/80 dark:bg-background/70 backdrop-blur-2xl shadow-[0_12px_40px_0_rgba(0,0,0,0.25)] border border-white/20 dark:border-white/10 transition-all duration-300 rounded-2xl ${
-            scrolled ? 'top-[calc(100%+0.75rem)]' : 'top-full mt-3'
-          }`}
-          style={{
-            WebkitBackdropFilter: 'blur(20px) saturate(180%)',
-            backdropFilter: 'blur(20px) saturate(180%)'
-          }}
-        >
+        <div className={`md:hidden absolute left-4 right-4 bg-background/95 backdrop-blur-md shadow-2xl transition-all duration-300 ${
+          scrolled ? 'top-[calc(100%+1rem)] rounded-2xl border border-border' : 'top-full rounded-2xl border border-border mt-2'
+        }`}>
           <ul className="flex flex-col items-center gap-6 py-8">
             {navItems.map((item) => (
               <li key={item.name}>
                 <Link 
                   href={item.href}
                   onClick={(e) => handleNavClick(e, item.href)}
-                  className="text-muted-foreground hover:text-foreground text-base font-medium transition-colors duration-200"
+                  className="text-muted-foreground hover:text-foreground text-base transition-colors duration-200"
                 >
                   {item.name}
                 </Link>

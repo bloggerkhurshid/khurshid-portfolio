@@ -173,23 +173,23 @@ export default function Projects({ initialProjects = [] }: { initialProjects?: P
                 className="fixed inset-0 bg-black/75 backdrop-blur-md cursor-pointer"
               />
 
-              {/* Modal Box with Solid Opaque Background */}
+              {/* Modal Box with Adaptive Theme Background */}
               <motion.div
                 initial={{ opacity: 0, scale: 0.95, y: 15 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95, y: 15 }}
                 transition={{ duration: 0.25, ease: "easeOut" }}
-                className="relative w-full max-w-2xl bg-[#121214] dark:bg-[#121214] light:bg-white border border-border rounded-3xl shadow-[0_25px_70px_rgba(0,0,0,0.8)] overflow-hidden z-10 flex flex-col max-h-[88vh]"
+                className="relative w-full max-w-2xl bg-card border border-border rounded-3xl shadow-2xl overflow-hidden z-10 flex flex-col max-h-[88vh]"
               >
                 {/* Header */}
-                <div className="p-5 sm:p-6 border-b border-border/70 flex items-start justify-between gap-4 bg-[#18181b]/90">
+                <div className="p-5 sm:p-6 border-b border-border flex items-start justify-between gap-4 bg-muted/40 backdrop-blur-sm">
                   <div className="flex items-center gap-3.5">
                     {selectedProject.image_path && (
                       <img
                         src={selectedProject.image_path.startsWith('http') ? selectedProject.image_path : `https://kode.devkayy.in${selectedProject.image_path}`}
                         alt={selectedProject.title}
                         referrerPolicy="no-referrer"
-                        className={`w-12 h-12 rounded-2xl shadow-sm border border-border/60 shrink-0 ${
+                        className={`w-12 h-12 rounded-2xl shadow-sm border border-border shrink-0 ${
                           selectedProject.slug === 'projuktisoft' || selectedProject.image_path.includes('projuktisoft.com')
                             ? 'bg-white p-2 object-contain'
                             : 'object-cover'
@@ -218,7 +218,7 @@ export default function Projects({ initialProjects = [] }: { initialProjects?: P
                 </div>
 
                 {/* Scrollable Content Body */}
-                <div className="p-5 sm:p-6 overflow-y-auto space-y-6 bg-[#121214]">
+                <div className="p-5 sm:p-6 overflow-y-auto space-y-6 bg-card">
                   {/* Description */}
                   <div>
                     <h4 className="font-display font-semibold text-xs uppercase text-muted-foreground tracking-wider mb-2">
@@ -238,7 +238,7 @@ export default function Projects({ initialProjects = [] }: { initialProjects?: P
                       {selectedProject.tech_stacks.split(',').map((tech) => (
                         <span
                           key={tech}
-                          className="px-3 py-1.5 rounded-xl text-xs font-medium bg-[#1e1e24] border border-border text-foreground/90"
+                          className="px-3 py-1.5 rounded-xl text-xs font-medium bg-muted/60 border border-border text-foreground/90"
                         >
                           {tech.trim()}
                         </span>
@@ -248,10 +248,10 @@ export default function Projects({ initialProjects = [] }: { initialProjects?: P
                 </div>
 
                 {/* Footer Actions */}
-                <div className="p-5 sm:p-6 border-t border-border/70 bg-[#18181b]/90 flex flex-wrap items-center justify-end gap-3">
+                <div className="p-5 sm:p-6 border-t border-border bg-muted/40 backdrop-blur-sm flex flex-wrap items-center justify-end gap-3">
                   <button
                     onClick={() => setSelectedProject(null)}
-                    className="px-5 py-2.5 rounded-xl border border-border hover:bg-muted text-sm font-medium transition-colors cursor-pointer"
+                    className="px-5 py-2.5 rounded-xl border border-border hover:bg-muted text-foreground text-sm font-medium transition-colors cursor-pointer"
                   >
                     Close
                   </button>
