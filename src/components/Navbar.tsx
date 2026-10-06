@@ -52,8 +52,12 @@ export default function Navbar() {
         />
         
         <nav className="relative flex h-16 items-center justify-between w-full px-8 xl:px-6">
-          <Link href="/" className="font-display text-foreground text-lg font-semibold tracking-tight">
-            khurshidalom<span className="text-primary">.in</span>
+          <Link href="/" className="inline-flex items-center transition-opacity hover:opacity-80 py-1" aria-label="Khurshid Alom Home">
+            <img 
+              src="/signature.png" 
+              alt="Khurshid Alom" 
+              className="h-8 sm:h-9 w-auto object-contain dark:invert transition-transform hover:scale-105 duration-300"
+            />
           </Link>
 
         <div className="flex items-center gap-4">
