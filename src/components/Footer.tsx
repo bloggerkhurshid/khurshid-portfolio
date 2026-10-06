@@ -16,6 +16,13 @@ export default function Footer() {
       <div className="mx-auto max-w-7xl px-6 flex flex-col md:flex-row justify-between items-center gap-8">
         
         <div className="flex flex-col items-center md:items-start gap-3 text-muted-foreground">
+          <Link href="/" className="inline-block transition-opacity hover:opacity-80">
+            <img 
+              src="/signature.png" 
+              alt="Khurshid Alom Signature" 
+              className="h-10 sm:h-12 w-auto object-contain dark:invert"
+            />
+          </Link>
           <p className="text-sm">
             © {new Date().getFullYear()}{" "}
             <Link href="/" className="hover:text-foreground hover:underline underline-offset-4 transition-colors">
