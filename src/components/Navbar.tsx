@@ -52,11 +52,11 @@ export default function Navbar() {
         />
         
         <nav className="relative flex h-16 items-center justify-between w-full px-8 xl:px-6">
-          <Link href="/" className="inline-flex items-center transition-opacity hover:opacity-80 py-1" aria-label="Khurshid Alom Home">
+          <Link href="/" className="inline-flex items-center transition-opacity hover:opacity-85 py-0.5" aria-label="Khurshid Alom Home">
             <img 
               src="/signature.png" 
               alt="Khurshid Alom" 
-              className="h-8 sm:h-9 w-auto object-contain dark:invert transition-transform hover:scale-105 duration-300"
+              className="h-10 sm:h-12 w-auto object-contain brightness-0 dark:invert transition-transform hover:scale-105 duration-300"
             />
           </Link>
 
