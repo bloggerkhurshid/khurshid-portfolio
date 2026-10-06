@@ -49,23 +49,22 @@ export default function Navbar() {
   }
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 pointer-events-none">
-      <div className={`relative mx-auto w-full max-w-7xl transition-transform duration-500 ease-out pointer-events-auto ${scrolled ? 'translate-y-4' : 'translate-y-0'}`}>
-        
-        {/* Floating Glass Background */}
-        <div 
-          className={`absolute inset-0 mx-3 sm:mx-4 xl:mx-0 h-16 rounded-2xl transition-all duration-500 ease-out ${
-            scrolled 
-              ? 'bg-background/60 dark:bg-background/40 backdrop-blur-xl border border-white/20 dark:border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.12)] dark:shadow-[0_8px_32px_0_rgba(0,0,0,0.4)] opacity-100 ring-1 ring-black/5 dark:ring-white/5' 
-              : 'bg-background/35 dark:bg-background/25 backdrop-blur-md border border-white/15 dark:border-white/5 shadow-[0_4px_20px_0_rgba(0,0,0,0.05)] opacity-95'
-          }`}
-          style={{
-            WebkitBackdropFilter: scrolled ? 'blur(16px) saturate(180%)' : 'blur(12px) saturate(150%)',
-            backdropFilter: scrolled ? 'blur(16px) saturate(180%)' : 'blur(12px) saturate(150%)'
-          }}
-        />
-        
-        <nav className="relative flex h-16 items-center justify-between w-full px-7 xl:px-6">
+    <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+      {/* Glass Background for Top Header */}
+      <div 
+        className={`absolute inset-0 transition-all duration-300 border-b ${
+          scrolled
+            ? 'bg-background/70 dark:bg-background/50 backdrop-blur-xl border-border/80 shadow-[0_4px_30px_rgba(0,0,0,0.06)] dark:shadow-[0_4px_30px_rgba(0,0,0,0.3)]'
+            : 'bg-background/40 dark:bg-background/20 backdrop-blur-lg border-border/40'
+        }`}
+        style={{
+          WebkitBackdropFilter: 'blur(16px) saturate(180%)',
+          backdropFilter: 'blur(16px) saturate(180%)'
+        }}
+      />
+
+      <div className="relative mx-auto w-full max-w-7xl px-6 sm:px-8">
+        <nav className="flex h-16 sm:h-20 items-center justify-between w-full">
           <Link href="/" className="inline-flex items-center transition-opacity hover:opacity-85 py-0.5" aria-label="Khurshid Alom Home">
             <img 
               src="/signature.png" 
