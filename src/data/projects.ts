@@ -41,6 +41,16 @@ export const staticProjects: Project[] = [
     image_path: 'https://nexxskill.com/assets/logo.png'
   },
   {
+    id: 107,
+    title: 'DailyAxom - EdTech Platform & Prep',
+    description: 'Comprehensive educational portal serving Assam government job updates, competitive exam preparation (ADRE & APSC), study notes, mock tests, push notification broadcasts, and custom administrative management.',
+    tech_stacks: 'Full Stack, Next.js, API Integration, EdTech, UI/UX',
+    live_url: 'https://www.dailyaxom.in/',
+    github_url: '',
+    slug: 'dailyaxom',
+    image_path: 'https://www.dailyaxom.in/apple-touch-icon.png'
+  },
+  {
     id: 101,
     title: 'VN Templates: Reels & Video',
     description: 'An app for discovering and using VN templates for Instagram Reels and TikTok videos.',
